@@ -5,7 +5,7 @@ const ThemeToggle = () => {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
-    <input type='checkbox' onClick={toggleTheme} />
+    <input type='checkbox' onClick={toggleTheme} style={{position: "absolute", top: "15px", left: "15px"}}/>
   );
 };
 

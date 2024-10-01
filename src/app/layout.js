@@ -1,8 +1,6 @@
+import "./fontiran.css";
 import "./globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { ThemeProvider } from "./theme/ThemeContext";
-import CssBaseline from "@mui/material/CssBaseline";
 
 export const metadata = {
   title: "Myth",
@@ -11,14 +9,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ThemeProvider>
-      <html lang="en">
-        <body suppressHydrationWarning={true}>
-          <Header />
+    <html lang="en">
+      <body suppressHydrationWarning={true}>
+        <ThemeProvider>
           {children}
-          <Footer />
-        </body>
-      </html>
-    </ThemeProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }

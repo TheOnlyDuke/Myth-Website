@@ -12,8 +12,8 @@
   --active-BG: #462bef;
   --red-BG: #ff002f;
   --not-active-BG: #fff;
-  --black-BG: #07000e;
-  --footer-BG: #110000;
+  --black-BG: #000000;
+  --footer-BG: #000000;
 }
 
 [data-theme="dark"] {
@@ -36,9 +36,16 @@
 
 html,
 body {
+  display: flex;
+  flex-direction: column;
   max-width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
+  font-family: IRANYekanX, sans-serif;
+  font-weight: normal;
+  -moz-font-feature-settings: "ss02";
+  -webkit-font-feature-settings: "ss02";
+  font-feature-settings: "ss02";
 }
 
 body {
