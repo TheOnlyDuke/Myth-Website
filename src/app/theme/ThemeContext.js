@@ -35,12 +35,16 @@ export const ThemeProvider = ({ children }) => {
       theme.palette.custom.activeText
     );
     document.documentElement.style.setProperty(
+      "--secondary-active-text",
+      theme.palette.custom.secActiveText
+    );
+    document.documentElement.style.setProperty(
       "--active-BG",
       theme.palette.custom.activeBG
     );
     document.documentElement.style.setProperty(
-      "--red-BG",
-      theme.palette.custom.redBG
+      "--third-active-BG",
+      theme.palette.custom.thirdActiveBG
     );
     document.documentElement.style.setProperty(
       "--not-active-BG",
@@ -59,8 +63,8 @@ export const ThemeProvider = ({ children }) => {
       theme.palette.custom.border
     );
     document.documentElement.style.setProperty(
-      "--orange-BG",
-      theme.palette.custom.orangeBG
+      "--secondary-active-BG",
+      theme.palette.custom.secActiveBG
     );
 
     // Save theme preference to localStorage

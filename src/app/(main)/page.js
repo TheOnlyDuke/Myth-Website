@@ -1,5 +1,8 @@
 import { Container, Box } from "@mui/material";
 import HeroSection from "@/components/mainPage/HeroSection";
+import IntroductionMenu from "@/components/mainPage/Introduction/IntroductionMenu";
+import DownloadSection from "@/components/mainPage/Download/DownloadSection";
+import SubjectIntro from "@/components/mainPage/SubjectIntro.jsx/SubjectIntro";
 
 export default function Home() {
 
@@ -22,8 +25,8 @@ export default function Home() {
       },
     },
     flex: 1,
-    minHeight: "2000px",
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
   }
 
@@ -34,7 +37,10 @@ export default function Home() {
     >
       <Container maxWidth="lg">
         <HeroSection />
+        <IntroductionMenu />
+        <SubjectIntro />
       </Container>
+      <DownloadSection />
     </Box>
   );
 }

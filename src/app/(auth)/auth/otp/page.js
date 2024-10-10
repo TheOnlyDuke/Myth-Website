@@ -8,8 +8,11 @@ import {
 import { Typography } from "@mui/material";
 import { useSearchParams } from "next/navigation";
 import { useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function VerifyPage({}) {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const phone = searchParams.get("phone");
   const [otp, setOtp] = useState("");
@@ -38,6 +41,7 @@ export default function VerifyPage({}) {
         const data = await response.json();
         if (response.ok) {
           console.log(data.token);
+          router.push(`/dashboard/`);
         } else {
           setError(data.error || "ثبت نام موفقیت آمیز نبود");
         }

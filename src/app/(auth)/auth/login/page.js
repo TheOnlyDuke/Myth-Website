@@ -3,8 +3,10 @@
 import { Box, TextField, Typography } from "@mui/material";
 import { useState, useCallback } from "react";
 import { SubmitButton, PhoneField, AuthNeviLink, AuthForm } from "@/components/auth";
+import { useRouter } from "next/navigation";
 
 function LoginPage() {
+  const router = useRouter();
   const [isLoadingLogin, setIsLoadingLogin] = useState(false);
   const [formData, setFormData] = useState({
     password: "",
@@ -18,6 +20,7 @@ function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    router.push(`/dashboard/`);
     console.log("Form submitted", formData);
   };
 

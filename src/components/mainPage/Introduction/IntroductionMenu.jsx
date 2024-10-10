@@ -1,0 +1,60 @@
+
+import { Box } from "@mui/material";
+import IMItems from "./IMItems";
+
+const menuDatas = [
+  {
+    title: (
+      <>
+        با بازی <span style={{ color: "var(--secondary-active-BG)" }}>ریاضی</span> یاد
+        بگیرید
+      </>
+    ),
+    desc: "مجموعه فلان با استفاده از جدید‌ترین متد ها مباحث غیر قابل فهم ریاضی را در حین بازی کردن و حل مثال به شما آموزش می‌دهد.",
+    picture: "test",
+  },
+  {
+    title: (
+      <>
+        <span style={{ color: "var(--third-active-BG)" }}>رقابت</span> با بقیه دانشجو ها
+      </>
+    ),
+    desc: "مجموعه فلان با استفاده از جدید‌ترین متد ها مباحث غیر قابل فهم ریاضی را در حین بازی کردن و حل مثال به شما آموزش می‌دهد.",
+    picture: "test",
+  },
+  {
+    title: (
+      <>
+        دریافت <span style={{ color: "var(--active-BG)" }}>امتیاز</span> با حل
+        سوالات
+      </>
+    ),
+    desc: "مجموعه فلان با استفاده از جدید‌ترین متد ها مباحث غیر قابل فهم ریاضی را در حین بازی کردن و حل مثال به شما آموزش می‌دهد.",
+    picture: "test",
+  },
+];
+
+export default function IntroductionMenu() {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        height: "1000px",
+        p: "50px 25px",
+        width: "100%",
+        flexDirection: "column",
+        justifyContent: "space-evenly",
+      }}
+    >
+      {menuDatas.map(({ title, desc, picture }, index) => (
+        <IMItems
+          key={index}
+          title={title}
+          desc={desc}
+          picture={picture}
+          direc={index % 2 ? "rtl" : "ltr"}
+        />
+      ))}
+    </Box>
+  );
+}

@@ -12,10 +12,9 @@ export default function HeaderBlogsPaper({ items }) {
     <Grid container spacing={2} width="100%" height="300px">
       {groupedItems.map((group, groupIndex) => (
         <Fragment key={groupIndex}>
-          <Grid item xs={12} md={3} height="100%">
+          <Grid xs={12} md={3} height="100%">
             {group.slice(0, 2).map((item) => (
               <Grid
-                item
                 xs={12}
                 key={item.id}
                 height="50%"
@@ -32,7 +31,7 @@ export default function HeaderBlogsPaper({ items }) {
             ))}
           </Grid>
           {group[2] && (
-            <Grid item xs={12} md={3} height="100%">
+            <Grid xs={12} md={3} height="100%">
               <HeaderBlogsItem
                 icon={group[2].icon}
                 title={group[2].title}
