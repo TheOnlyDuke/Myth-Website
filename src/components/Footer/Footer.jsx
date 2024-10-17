@@ -54,11 +54,7 @@ export default function Footer() {
   };
 
   return (
-    <Grid
-      container
-      component="footer"
-      sx={footerStyle}
-    >
+    <Grid container component="footer" sx={footerStyle}>
       <Container maxWidth="lg" disableGutters>
         <Grid xs={12} container sx={footerContainerstyles}>
           <FooterContactMenu />

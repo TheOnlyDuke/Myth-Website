@@ -19,7 +19,9 @@ export default function FooterMenu({ menuData }) {
         {menuData.items.map((item) => {
           return (
             <li key={item[0]}>
-              <Link href={item[1]}>{item[0]}</Link>
+              <Link href={item[1]} style={{ cursor: "pointer" }}>
+                {item[0]}
+              </Link>
             </li>
           );
         })}

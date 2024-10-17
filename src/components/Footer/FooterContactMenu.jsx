@@ -32,7 +32,12 @@ export default function FooterContactMenu({}) {
       </Box>
       <Box component="ul" aria-labelledby="footerLogo">
         {iconWithText.map((item) => (
-          <IconWithText key={item.text} iconPath={item.path} text={item.text} />
+          <IconWithText
+            key={item.text}
+            iconPath={item.path}
+            text={item.text}
+            link={false}
+          />
         ))}
       </Box>
     </Grid>

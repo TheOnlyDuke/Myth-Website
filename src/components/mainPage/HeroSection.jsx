@@ -13,14 +13,13 @@ export default function HeroSection() {
         height: "calc(80vh)",
         display: "flex",
         alignItems: "center",
-        marginTop: "105px",
       }}
       disableGutters
       id="hero-section"
     >
       <Box
+        className="flexRow"
         sx={{
-          display: "flex",
           height: {
             xs: "90vh",
             sm: "605px",
@@ -29,7 +28,6 @@ export default function HeroSection() {
             xs: "column",
             sm: "row",
           },
-          justifyContent: "space-between",
         }}
       >
         <Box
@@ -68,12 +66,11 @@ export default function HeroSection() {
           />
         </Box>
         <Box
+          className="flexColumn"
           sx={{
             width: "42.5%",
             direction: "rtl",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-evenly",
+            justifyContent: "space-evenly !important",
           }}
         >
           <Typography variant="display">

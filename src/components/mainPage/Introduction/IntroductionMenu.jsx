@@ -40,7 +40,7 @@ export default function IntroductionMenu() {
       sx={{
         display: "flex",
         height: "1000px",
-        p: "50px 25px",
+        p: "0 25px",
         width: "100%",
         flexDirection: "column",
         justifyContent: "space-evenly",

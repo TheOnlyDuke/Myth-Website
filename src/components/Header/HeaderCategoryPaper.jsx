@@ -2,6 +2,7 @@ import { Typography, SvgIcon } from "@mui/material";
 import Image from "next/image";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { ArrowLeft } from "@/utils/icons";
+import DotDivider from "../DotDivider";
 
 export default function CategoryPaper({
   title,
@@ -60,15 +61,7 @@ export default function CategoryPaper({
           <Typography variant="normalBody">{title}</Typography>
           <Typography variant="smallBodyCap" sx={{ fontSize: "15px", color: "var(--secondary-text)" }}>
             {difficulty}{" "}
-            <span
-              style={{
-                fontSize: "25px",
-                color: "var(--secondary-text)",
-                margin: "0 5px",
-              }}
-            >
-              .
-            </span>{" "}
+            <DotDivider />{" "}
             {numOfEpisodes} مبحث آموزشی
           </Typography>
         </Grid2>

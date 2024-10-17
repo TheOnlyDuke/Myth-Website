@@ -68,3 +68,17 @@ export const TopSubjects = [
   { id: 4, name: "هندسه", icon: hendese },
   { id: 5, name: "بردارها", icon: borders },
 ];
+
+
+import { Layers } from "./icons";
+export const Questions = [
+  {id: 1, title: "سوال انتگرال مرتبه دوم", group: "تابع ها", difficulty : "سخت", score: 13, icon : Layers, latex: "g(x) = sin(x)"},
+  {id: 2, title: "سوال انتگرال مرتبه دوم", group: "تابع ها", difficulty : "سخت", score: 13, icon : Layers, latex: "g(x) = sin(x)"},
+  {id: 3, title: "سوال انتگرال مرتبه دوم", group: "تابع ها", difficulty : "سخت", score: 13, icon : Layers, latex: "g(x) = sin(x)"},
+  {id: 4, title: "سوال انتگرال مرتبه دوم", group: "تابع ها", difficulty : "سخت", score: 13, icon : Layers, latex: "g(x) = sin(x)"},
+  {id: 5, title: "سوال انتگرال مرتبه دوم", group: "تابع ها", difficulty : "سخت", score: 13, icon : Layers, latex: "g(x) = sin(x)"},
+  {id: 6, title: "سوال انتگرال مرتبه دوم", group: "تابع ها", difficulty : "سخت", score: 13, icon : Layers, latex: "g(x) = sin(x)"},
+  {id: 7, title: "سوال انتگرال مرتبه دوم", group: "تابع ها", difficulty : "سخت", score: 13, icon : Layers, latex: "g(x) = sin(x)"},
+  {id: 8, title: "سوال انتگرال مرتبه دوم", group: "تابع ها", difficulty : "سخت", score: 13, icon : Layers, latex: "g(x) = sin(x)"},
+]
+ 

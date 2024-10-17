@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import Icons from './Icons';
 
-const IconWithText = ({iconPath, text, hoverable = true, baseColor = 'var(--active-text)', link=true }) => {
+const IconWithText = ({iconPath, text, hoverable = true, baseColor = 'var(--active-text)', link = false }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const containerStyle = {
@@ -17,6 +17,7 @@ const IconWithText = ({iconPath, text, hoverable = true, baseColor = 'var(--acti
     marginLeft: '8px',
     color: !hoverable? baseColor : isHovered ? baseColor : 'var(--secondary-text)',
     transition: 'color 0.3s ease',
+    cursor: "inherit",
   };
 
   return (

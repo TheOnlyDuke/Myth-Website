@@ -1,11 +1,13 @@
 import { Container, Box } from "@mui/material";
-import HeroSection from "@/components/mainPage/HeroSection";
-import IntroductionMenu from "@/components/mainPage/Introduction/IntroductionMenu";
-import DownloadSection from "@/components/mainPage/Download/DownloadSection";
-import SubjectIntro from "@/components/mainPage/SubjectIntro.jsx/SubjectIntro";
+import {
+  DownloadSection,
+  SubjectIntro,
+  QuestionBankPreview,
+  IntroductionMenu,
+  HeroSection,
+} from "@/components/mainPage";
 
 export default function Home() {
-
   const mainPageStyles = {
     "::before": {
       content: `""`,
@@ -28,17 +30,16 @@ export default function Home() {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-  }
+    paddingTop: "115px",
+  };
 
   return (
-    <Box
-      component="main"
-      sx={mainPageStyles}
-    >
-      <Container maxWidth="lg">
+    <Box component="main" sx={mainPageStyles}>
+      <Container maxWidth="lg" className="flexColumn" sx={{ gap: "150px", paddingBottom: "150px" }}>
         <HeroSection />
         <IntroductionMenu />
         <SubjectIntro />
+        <QuestionBankPreview />
       </Container>
       <DownloadSection />
     </Box>

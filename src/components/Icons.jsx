@@ -19,7 +19,7 @@ export default function Icons({
     height: "24",
     viewBox: "0 0 24 24",
     transition: "all 0.3s ease",
-    cursor: link ? "pointer" : "initial",
+    cursor: "inherit",
     margin: "5px",
   };
 

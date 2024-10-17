@@ -31,7 +31,7 @@ export default function FooterSideMenues({}) {
       ],
     },
   };
-  
+
   return (
     <Grid id="footerLinks" container spacing={4} width="50%">
       {Object.keys(MenuesItems).map((key) => {
