@@ -2,9 +2,7 @@ import Link from "next/link";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { Typography } from "@mui/material";
 
-const menu = ["وضعیت زیرساخت", "حریم خصوصی", "قوانین و شرایط"];
-
-export default function FooterBottomLine({}) {
+export default function FooterBottomLine({menu}) {
   return (
     <Grid
       xs={12}
@@ -16,7 +14,7 @@ export default function FooterBottomLine({}) {
         alignItems: "center",
       }}
     >
-      <Grid xs={6} id="footerLisence">
+      <Grid xs={12} sm={6} id="footerLisence">
         <Typography variant="smallBody">
           ©️ 1401 - تمامی حقوق این وبسایت متعلق به گروه فلان می‌باشد.
         </Typography>
@@ -27,12 +25,16 @@ export default function FooterBottomLine({}) {
         container
         sx={{
           justifyContent: "space-evenly",
+          display: {
+            xs: "none",
+            sm: "flex",
+          },
         }}
       >
         {menu.map((each, index) => (
           <Typography variant="smallBody" key={index}>
-            <Link href="\" style={{ cursor: "pointer" }}>
-              {each}
+            <Link href={each[1]} style={{ cursor: "pointer" }}>
+              {each[0]}
             </Link>
           </Typography>
         ))}

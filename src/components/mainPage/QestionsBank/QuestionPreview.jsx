@@ -14,7 +14,7 @@ export default function QuestionPreview({
   latex,
 }) {
   return (
-    <Grid xs={3}>
+    <Grid xs={12} sm={3}>
       <Paper
         className="flexColumn"
         sx={{
@@ -25,6 +25,7 @@ export default function QuestionPreview({
           borderColor: "var(--border)",
           borderRadius: "var(--border-radius)",
           transition: "all 200ms ease-out",
+          direction: "ltr",
           "*": {
             transition: "inherit",
           },

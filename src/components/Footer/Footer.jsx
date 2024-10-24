@@ -1,16 +1,27 @@
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import { Container } from "@mui/material";
+import { Container, Divider } from "@mui/material";
 import FooterContactMenu from "./FooterContactMenu";
 import FooterSideMenues from "./FooterSideMenues";
 import FooterBottomLine from "./FooterBottomLine";
 
+const menu = [
+  ["وضعیت زیرساخت", `\\`],
+  ["حریم خصوصی", `\\`],
+  ["قوانین و شرایط", `\\`],
+];
+
 export default function Footer() {
   const footerStyle = {
-    height: "500px",
     width: "100%",
     backgroundColor: "var(--footer-BG)",
-    px: "12.5vw",
-    py: "5vh",
+    px: {
+      xs: "30px",
+      lgp: 0,
+    },
+    py: {
+      xs: "50px",
+      sm: "70px",
+    },
     direction: "rtl",
     color: "var(--secondary-text)",
     "*": {
@@ -51,16 +62,34 @@ export default function Footer() {
     justifyContent: "space-between",
     alignItems: "center",
     height: "90%",
+    gap: "50px",
   };
 
   return (
     <Grid container component="footer" sx={footerStyle}>
-      <Container maxWidth="lg" disableGutters>
+      <Container
+        maxWidth="lg"
+        disableGutters
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: {
+            xs: "50px",
+            sm: "90px",
+          },
+        }}
+      >
         <Grid xs={12} container sx={footerContainerstyles}>
           <FooterContactMenu />
-          <FooterSideMenues />
+          <FooterSideMenues menu={menu} />
         </Grid>
-        <FooterBottomLine />
+        <Divider
+          component="hr"
+          orientation="horizontal"
+          sx={{ backgroundColor: "#fff", display: { xs: "block", sm: "none" } }}
+          flexItem
+        />
+        <FooterBottomLine menu={menu} />
       </Container>
     </Grid>
   );

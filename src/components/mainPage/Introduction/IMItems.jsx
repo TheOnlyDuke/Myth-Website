@@ -7,14 +7,20 @@ export default function IMItems({ direc, title, desc, picture }) {
         display: "flex",
         width: "100%",
         justifyContent: "space-between",
-        flexDirection: direc === "rtl" ? "row" : "row-reverse",
+        flexDirection: {
+          xs: "column",
+          sm: direc === "rtl" ? "row" : "row-reverse",
+        },
       }}
     >
       <Box
         sx={{
           justifyContent: "space-between",
           direction: "rtl",
-          width: "475px",
+          width: {
+            sx: "100%",
+            sm: "475px",
+          },
         }}
       >
         <Typography variant="title" sx={{ marginBottom: "30px" }}>

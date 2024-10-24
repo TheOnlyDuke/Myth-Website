@@ -10,7 +10,7 @@ export default function DownloadSection({}) {
     <Box
       sx={{
         width: "100%",
-        height: { xs: "780", sm: "1080px" },
+        height: { xs: "780px", sm: "1080px" },
         backgroundColor: "var(--active-BG)",
         position: "relative",
         display: "flex",

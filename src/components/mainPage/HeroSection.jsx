@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Button } from "@mui/material";
+import { Box, Container, Typography, Button, Divider } from "@mui/material";
 import Image from "next/image";
 
 export default function HeroSection() {
@@ -10,7 +10,7 @@ export default function HeroSection() {
   return (
     <Container
       sx={{
-        height: "calc(80vh)",
+        height: "fit-content",
         display: "flex",
         alignItems: "center",
       }}
@@ -18,29 +18,39 @@ export default function HeroSection() {
       id="hero-section"
     >
       <Box
-        className="flexRow"
         sx={{
+          display: "flex",
           height: {
-            xs: "90vh",
+            xs: "fit-content",
             sm: "605px",
           },
           flexDirection: {
             xs: "column",
             sm: "row",
           },
+          gap: {
+            xs: "var(--gap)",
+            sm: 0,
+          },
+          justifyContent: "space-between",
         }}
       >
         <Box
           sx={{
             position: "relative",
+            margin: {
+              xs: "auto",
+              sm: 0,
+            },
             width: {
-              xs: "320px",
-              lg: "470px",
+              xs: "90%",
+              sm: "470px",
             },
-            height: {
-              xs: "415px",
-              lg: "610px",
-            },
+            aspectRatio: "320/420",
+            // height: {
+            //   xs: "415px",
+            //   lg: "610px",
+            // },
             "::after": {
               content: `"ارشمیدش، پدر علم ریاضی"`,
               opacity: 0,
@@ -68,12 +78,21 @@ export default function HeroSection() {
         <Box
           className="flexColumn"
           sx={{
-            width: "42.5%",
+            width: { xs: "100%", sm: "42.5%" },
+            gap: { xs: "30px", sm: undefined },
             direction: "rtl",
             justifyContent: "space-evenly !important",
           }}
         >
-          <Typography variant="display">
+          <Typography
+            variant="display"
+            sx={{
+              width: {
+                xs: "75%",
+                sm: "auto",
+              },
+            }}
+          >
             یادگـیری مفـاهیم ریاضـی با بازی کـردن
           </Typography>
           <Typography variant="normalBody" sx={{ color: "text.secondary" }}>

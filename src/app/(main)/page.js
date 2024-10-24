@@ -30,12 +30,17 @@ export default function Home() {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    paddingTop: "115px",
+    paddingTop: "125px",
   };
 
   return (
     <Box component="main" sx={mainPageStyles}>
-      <Container maxWidth="lg" className="flexColumn" sx={{ gap: "150px", paddingBottom: "150px" }}>
+      <Container
+        maxWidth="lg"
+        className="flexColumn"
+        disableGutters
+        sx={{ gap: { xs: "100px", sm: "150px" }, paddingBottom: "150px", px: "25px" }}
+      >
         <HeroSection />
         <IntroductionMenu />
         <SubjectIntro />

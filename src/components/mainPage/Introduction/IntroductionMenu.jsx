@@ -1,4 +1,3 @@
-
 import { Box } from "@mui/material";
 import IMItems from "./IMItems";
 
@@ -6,7 +5,8 @@ const menuDatas = [
   {
     title: (
       <>
-        با بازی <span style={{ color: "var(--secondary-active-BG)" }}>ریاضی</span> یاد
+        با بازی{" "}
+        <span style={{ color: "var(--secondary-active-BG)" }}>ریاضی</span> یاد
         بگیرید
       </>
     ),
@@ -16,7 +16,8 @@ const menuDatas = [
   {
     title: (
       <>
-        <span style={{ color: "var(--third-active-BG)" }}>رقابت</span> با بقیه دانشجو ها
+        <span style={{ color: "var(--third-active-BG)" }}>رقابت</span> با بقیه
+        دانشجو ها
       </>
     ),
     desc: "مجموعه فلان با استفاده از جدید‌ترین متد ها مباحث غیر قابل فهم ریاضی را در حین بازی کردن و حل مثال به شما آموزش می‌دهد.",
@@ -39,11 +40,11 @@ export default function IntroductionMenu() {
     <Box
       sx={{
         display: "flex",
-        height: "1000px",
+        gap: "100px",
         p: "0 25px",
         width: "100%",
         flexDirection: "column",
-        justifyContent: "space-evenly",
+        justifyContent: "space-between",
       }}
     >
       {menuDatas.map(({ title, desc, picture }, index) => (

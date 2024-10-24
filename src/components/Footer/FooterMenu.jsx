@@ -2,7 +2,7 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { Box } from "@mui/material";
 import Link from "next/link";
 
-export default function FooterMenu({ menuData }) {
+export default function FooterMenu({ menuData, index }) {
   const titlesStyle = {
     fontSize: "20px",
     fontWeight: "600",
@@ -11,14 +11,23 @@ export default function FooterMenu({ menuData }) {
   };
 
   return (
-    <Grid lg={4}>
+    <Grid
+      xs={6}
+      sm={4}
+      sx={{
+        display: {
+          xs: "block",
+          sm: index === 3 ? "none" : "block",
+        },
+      }}
+    >
       <Box id="footerLogo" sx={titlesStyle}>
         {menuData.title}
       </Box>
       <Box component="ul" aria-labelledby="footerLogo">
-        {menuData.items.map((item) => {
+        {menuData.items.map((item, index) => {
           return (
-            <li key={item[0]}>
+            <li key={index}>
               <Link href={item[1]} style={{ cursor: "pointer" }}>
                 {item[0]}
               </Link>
