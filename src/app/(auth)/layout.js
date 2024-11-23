@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { Box, Container } from "@mui/material";
 
 export default function AuthLayout({ children }) {
@@ -35,7 +36,7 @@ export default function AuthLayout({ children }) {
         }}
         disableGutters
       >
-        {children}
+        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
       </Container>
     </Box>
   );
