@@ -3,6 +3,7 @@ import { SubmitButton, OTPInput, AuthForm } from "@/components/auth";
 import { Box, Typography } from "@mui/material";
 import { useSearchParams } from "next/navigation";
 import { useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 
 export default function VerifyPage({}) {
   const router = useRouter();
