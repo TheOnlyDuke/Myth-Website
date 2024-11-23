@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { SvgIcon } from "@mui/material";
 
 const defaultIconModule = (props, path) => (
@@ -12,6 +13,18 @@ const defaultIconModule = (props, path) => (
     </svg>
   </SvgIcon>
 );
+
+export const SVGFileWrapper = forwardRef(({ svgPath, viewBox = "0 0 1000 1000", ...otherProps }, ref) => {
+  return (
+    <SvgIcon 
+      {...otherProps} 
+      viewBox={viewBox}
+      ref={ref}
+    >
+      <image href={svgPath} fill={true} />
+    </SvgIcon>
+  );
+});
 
 export const GlobeIcon = (props) =>
   defaultIconModule(
@@ -64,3 +77,8 @@ export const Layers = (
     stroke-linejoin="round"
   />
 );
+
+export const ManWithCalc = (props) => {
+  const svgPath = `/svg/manwithcalc.svg`;
+  return <SVGFileWrapper {...props} svgPath={svgPath} viewBox="0 0 1000 1000" />;
+};

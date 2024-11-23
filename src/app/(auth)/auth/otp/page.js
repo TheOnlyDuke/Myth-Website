@@ -9,7 +9,6 @@ import { Typography } from "@mui/material";
 import { useSearchParams } from "next/navigation";
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { useRouter } from "next/navigation";
 
 export default function VerifyPage({}) {
   const router = useRouter();

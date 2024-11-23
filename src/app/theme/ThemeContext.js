@@ -8,7 +8,6 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Initialize theme from localStorage or default to light mode
     if (typeof window !== "undefined") {
       const savedTheme = localStorage.getItem("theme");
       return savedTheme === "dark";
@@ -67,7 +66,6 @@ export const ThemeProvider = ({ children }) => {
       theme.palette.custom.secActiveBG
     );
 
-    // Save theme preference to localStorage
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
   }, [isDarkMode]);
 
