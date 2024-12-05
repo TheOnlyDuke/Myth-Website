@@ -96,7 +96,7 @@ export default function HeroSection() {
             یادگـیری مفـاهیم ریاضـی با بازی کـردن
           </Typography>
           <Typography variant="normalBody" sx={{ color: "text.secondary" }}>
-            مجموعه فلان با استفاده از جدید‌ترین متد ها مباحث غیر قابل فهم ریاضی
+            مجموعه سیگما با استفاده از جدید‌ترین متد ها مباحث غیر قابل فهم ریاضی
             را در حین بازی کردن و حل مثال به شما آموزش می‌دهد.
           </Typography>
           <Button variant="contained" sx={{ width: "195px", height: "65px" }}>

@@ -23,16 +23,19 @@ export default function VerifyPage({}) {
       console.log(otp);
 
       try {
-        const response = await fetch("http://127.0.0.1:8080/accounts/verify/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Requested-With": "XMLHttpRequest",
-          },
-          body: JSON.stringify({
-            code: otp,
-          }),
-        });
+        const response = await fetch(
+          "http://77.237.82.221:8000/accounts/verify/",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Requested-With": "XMLHttpRequest",
+            },
+            body: JSON.stringify({
+              code: otp,
+            }),
+          }
+        );
         const data = await response.json();
         if (response.ok) {
           console.log(data.token);
@@ -52,7 +55,7 @@ export default function VerifyPage({}) {
   return (
     <AuthForm onSubmit={handleSubmit}>
       <Typography variant="title" sx={{ marginBottom: "25px" }}>
-        ورود به میلف
+        ورود به سیگما
       </Typography>
       <Typography variant="normalBodyCap">
         کد تایید به شماره {phone} ارسال شد

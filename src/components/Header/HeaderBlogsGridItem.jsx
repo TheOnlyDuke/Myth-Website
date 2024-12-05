@@ -16,6 +16,10 @@ export default function HeaderBlogsItem({ title, description, icon }) {
           backgroundColor: "var(--not-active-BG)",
           boxShadow: "none",
           transition: "background-color 250ms ease-in-out",
+          cursor: "pointer",
+          "& *": {
+            cursor: "inherit",
+          },
           "&:hover": {
             backgroundColor: "var(--black-BG)",
             ".MuiTypography-normalBody": {
@@ -40,7 +44,7 @@ export default function HeaderBlogsItem({ title, description, icon }) {
               alignItems: "center",
             }}
           >
-            <SvgIcon  sx={{ width: "24px", height: "24px", fill: "none" }}>
+            <SvgIcon sx={{ width: "24px", height: "24px", fill: "none" }}>
               {icon}
             </SvgIcon>
           </Grid>

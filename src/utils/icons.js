@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import { SvgIcon } from "@mui/material";
+import { useTheme } from '@/app/theme/ThemeContext';
 
 const defaultIconModule = (props, path) => (
   <SvgIcon {...props}>
@@ -14,17 +15,20 @@ const defaultIconModule = (props, path) => (
   </SvgIcon>
 );
 
-export const SVGFileWrapper = forwardRef(({ svgPath, viewBox = "0 0 1000 1000", ...otherProps }, ref) => {
-  return (
-    <SvgIcon 
-      {...otherProps} 
-      viewBox={viewBox}
-      ref={ref}
-    >
-      <image href={svgPath} fill={true} />
-    </SvgIcon>
-  );
-});
+export const SVGFileWrapper = forwardRef(
+  ({ svgPath, width, height, ...otherProps }, ref) => {
+    return (
+      <SvgIcon
+        {...otherProps}
+        viewBox={`0 0 ${width} ${height}`}
+        sx={{ width: `${width}px`, height: `${height}px` }}
+        ref={ref}
+      >
+        <image href={svgPath} width={width} height={height} />
+      </SvgIcon>
+    );
+  }
+);
 
 export const GlobeIcon = (props) =>
   defaultIconModule(
@@ -78,7 +82,23 @@ export const Layers = (
   />
 );
 
-export const ManWithCalc = (props) => {
-  const svgPath = `/svg/manwithcalc.svg`;
-  return <SVGFileWrapper {...props} svgPath={svgPath} viewBox="0 0 1000 1000" />;
+export const HeroManWithCalc = (props) => {
+  const svgPath = `/svg/heroManWithCalc.svg`;
+  return (
+    <SVGFileWrapper {...props} svgPath={svgPath} width="450" height="450" />
+  );
+};
+
+export const HeroCompetition = (props) => {
+  const svgPath = "/svg/heroCompetition.svg";
+  return (
+    <SVGFileWrapper {...props} svgPath={svgPath} width="450" height="450" />
+  );
+};
+
+export const HeroScore = (props) => {
+  const svgPath = "/svg/heroScore.svg";
+  return (
+    <SVGFileWrapper {...props} svgPath={svgPath} width="450" height="450" />
+  );
 };

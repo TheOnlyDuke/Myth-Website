@@ -26,8 +26,10 @@ export default function QuestionPreview({
           borderRadius: "var(--border-radius)",
           transition: "all 200ms ease-out",
           direction: "ltr",
+          cursor: "pointer",
           "*": {
             transition: "inherit",
+            cursor: "inherit"
           },
           p: "30px",
           ":hover": {

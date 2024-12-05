@@ -57,7 +57,7 @@ export default function Page() {
 
       try {
         const response = await fetch(
-          "http://127.0.0.1:8080/accounts/register/",
+          "http://77.237.82.221:8000/accounts/register/",
           {
             method: "POST",
             headers: {
@@ -95,16 +95,16 @@ export default function Page() {
     <>
       <AuthForm onSubmit={handleSubmit}>
         <Typography
-          variant="title" 
+          variant="title"
           sx={{
             mb: 3,
             fontSize: "40px",
             fontWeight: "1000",
             letterSpacing: "-0.25pt",
             marginBottom: "50px",
-          }}
+          }}  
         >
-          ثبت نام در میلف
+          ثبت نام در سیگما
         </Typography>
         <InputField
           name="username"

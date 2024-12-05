@@ -27,7 +27,7 @@ export default function VerifyPage({}) {
       setError("");
 
       try {
-        const response = await fetch("http://127.0.0.1:8080/accounts/verify/", {
+        const response = await fetch("http://77.237.82.221:8000/accounts/verify/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -7,6 +7,7 @@ export default function IMItems({ direc, title, desc, picture }) {
         display: "flex",
         width: "100%",
         justifyContent: "space-between",
+        alignItems: "center",
         flexDirection: {
           xs: "column",
           sm: direc === "rtl" ? "row" : "row-reverse",
@@ -28,7 +29,7 @@ export default function IMItems({ direc, title, desc, picture }) {
         </Typography>
         <Typography variant="normalBodyCap">{desc}</Typography>
       </Box>
-      <Box>{picture}</Box>
+      {picture}
     </Box>
   );
 }

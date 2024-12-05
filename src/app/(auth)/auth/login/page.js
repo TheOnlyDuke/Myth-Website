@@ -2,7 +2,12 @@
 
 import { Box, TextField, Typography } from "@mui/material";
 import { useState, useCallback } from "react";
-import { SubmitButton, PhoneField, AuthNeviLink, AuthForm } from "@/components/auth";
+import {
+  SubmitButton,
+  PhoneField,
+  AuthNeviLink,
+  AuthForm,
+} from "@/components/auth";
 import { useRouter } from "next/navigation";
 
 function LoginPage() {
@@ -18,15 +23,45 @@ function LoginPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    router.push(`/dashboard/`);
-    console.log("Form submitted", formData);
-  };
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      setError("");
+
+      try {
+        const response = await fetch(
+          "http://77.237.82.221:8000/accounts/login/",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Requested-With": "XMLHttpRequest",
+            },
+            body: JSON.stringify({
+              phone_number: formData.phoneNumber,
+              password: formData.password,
+            }),
+          }
+        );
+        const data = await response.json();
+        if (response.ok) {
+          console.log(data.token);
+          router.push(`/dashboard/`);
+        } else {
+          setError(data.error || "ورود موفقیت آمیز نبود");
+        }
+      } catch (error) {
+        setError("مشکل در برقراری ارتباط با سرور");
+        console.error("Error:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [formData, router]
+  );
 
   return (
-    <AuthForm onSubmit={handleSubmit}
-    >
+    <AuthForm onSubmit={handleSubmit}>
       <Typography
         variant="title"
         sx={{
@@ -34,7 +69,7 @@ function LoginPage() {
           marginBottom: "50px",
         }}
       >
-        ورود به میلف
+        ورود به سیگما
       </Typography>
       <PhoneField value={formData.phoneNumber} onChange={handleChange} />
       <TextField

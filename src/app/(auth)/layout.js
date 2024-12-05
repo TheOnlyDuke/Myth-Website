@@ -22,6 +22,7 @@ export default function AuthLayout({ children }) {
           top: "15px",
           left: "30px",
           fontSize: "40px",
+          cursor: "pointer",
         }}
       >
         &larr;

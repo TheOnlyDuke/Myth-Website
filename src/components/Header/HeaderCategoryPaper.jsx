@@ -21,6 +21,10 @@ export default function CategoryPaper({
         width: "340px",
         direction: "ltr",
         transition: "background-color 250ms ease-in-out",
+        cursor: "pointer",
+        "& *" : {
+          cursor: "inherit"
+        },
         "&:hover": {
           backgroundColor: "var(--black-BG)",
           '.MuiTypography-normalBody': {
@@ -44,6 +48,7 @@ export default function CategoryPaper({
           sx={{
             display: "flex",
             alignItems: "center",
+            cursor: "pointer",
           }}
         >
           <Image src={icon} width={30} height={30} alt={title} />

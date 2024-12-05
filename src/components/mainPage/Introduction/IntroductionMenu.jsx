@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import IMItems from "./IMItems";
-import { ManWithCalc } from "@/utils/icons";
+import { HeroCompetition, HeroManWithCalc, HeroScore } from "@/utils/icons";
 
 const menuDatas = [
   {
@@ -12,7 +12,7 @@ const menuDatas = [
       </>
     ),
     desc: "مجموعه فلان با استفاده از جدید‌ترین متد ها مباحث غیر قابل فهم ریاضی را در حین بازی کردن و حل مثال به شما آموزش می‌دهد.",
-    picture: <ManWithCalc />,
+    picture: <HeroManWithCalc />,
   },
   {
     title: (
@@ -22,7 +22,7 @@ const menuDatas = [
       </>
     ),
     desc: "مجموعه فلان با استفاده از جدید‌ترین متد ها مباحث غیر قابل فهم ریاضی را در حین بازی کردن و حل مثال به شما آموزش می‌دهد.",
-    picture: "test",
+    picture: <HeroCompetition />,
   },
   {
     title: (
@@ -32,7 +32,7 @@ const menuDatas = [
       </>
     ),
     desc: "مجموعه فلان با استفاده از جدید‌ترین متد ها مباحث غیر قابل فهم ریاضی را در حین بازی کردن و حل مثال به شما آموزش می‌دهد.",
-    picture: "test",
+    picture: <HeroScore />,
   },
 ];
 

@@ -306,7 +306,7 @@ const createCustomTheme = (mode) => {
               secActiveText : "#B3B3B3",
               notActiveBG: "#121212",
               activeBG: "#3C83EE",
-              secActiveBG: "#EFA71F",
+              secActiveBG: "#2FE860",
               thirdActiveBG: "#E83153",
               blackBG: "#000",
               footerBG: "#000",

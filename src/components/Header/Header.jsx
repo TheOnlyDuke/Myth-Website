@@ -1,18 +1,9 @@
 "use client";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Box,
-  Container,
-  Button,
-} from "@mui/material";
+import { AppBar, Toolbar, Typography, Box, Container } from "@mui/material";
 import { useState, useEffect, useRef, useCallback } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggleButton";
 import HeaderMenu from "./HeaderMenu";
-import { GlobeIcon } from "@/utils/icons";
 
 const HeaderStyles = {
   flex: {
@@ -33,6 +24,7 @@ const HeaderStyles = {
     transition: "background-color 250ms ease-in-out",
     ":hover": {
       backgroundColor: "var(--black-BG)",
+      cursor: "pointer",
     },
   },
 };
@@ -42,13 +34,13 @@ const preventScroll = (e) => {
 };
 
 const disableScroll = () => {
-  document.body.style.overflow = 'hidden';
-  document.addEventListener('wheel', preventScroll, { passive: false });
+  document.body.style.overflow = "hidden";
+  document.addEventListener("wheel", preventScroll, { passive: false });
 };
 
 const enableScroll = () => {
-  document.body.style.overflow = '';
-  document.removeEventListener('wheel', preventScroll);
+  document.body.style.overflow = "";
+  document.removeEventListener("wheel", preventScroll);
 };
 
 function Header() {
@@ -142,10 +134,12 @@ function Header() {
               },
             }}
           >
-            <Box sx={{ ...HeaderStyles.flex, width: "25%" }}>
+            <Box
+              sx={{ ...HeaderStyles.flex, width: "25%", alignItems: "center" }}
+            >
               <Link href="/" style={{ "margin-left": "15px" }}>
                 {/* <Image src={""} alt="لوگو تیم" /> */}
-                <Typography variant="smallTitle">لوگو تیم</Typography>
+                <Typography variant="smallTitle" sx={{cursor: "pointer"}}>سیگما</Typography>
               </Link>
               <Box
                 sx={{
@@ -177,36 +171,16 @@ function Header() {
               sx={{
                 ...HeaderStyles.flex,
                 flexDirection: "row",
+                alignItems: "center",
                 display: { xs: "none", sm: "flex" },
               }}
             >
-              <Button
-                sx={{
-                  backgroundColor: "var(--not-active-BG)",
-                  p: "17px 20px",
-                  my: "5px",
-                  "&:hover": {
-                    path: {
-                      stroke: "#fff",
-                    },
-                    ".MuiTypography-smallBody": {
-                      color: "var(--active-text)",
-                    },
-                  },
-                }}
-              >
-                <GlobeIcon
-                  width="21px"
-                  height="21px"
-                  stroke="var(--black-BG)"
-                  sx={{ marginLeft: "5px" }}
-                />
-                <Typography variant="smallBody">فارسی</Typography>
-              </Button>
-              <ThemeToggle />
               <Typography sx={HeaderStyles.SignUpButton}>
-                <Link href="/auth">ورود یا ثبت نام</Link>
+                <Link href="/auth" style={{ cursor: "pointer" }}>
+                  ورود یا ثبت نام
+                </Link>
               </Typography>
+              <ThemeToggle />
             </Box>
             <Box
               sx={{

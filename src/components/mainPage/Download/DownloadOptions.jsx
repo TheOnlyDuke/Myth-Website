@@ -6,7 +6,17 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 
 export default function DownloadOptions() {
   return (
-    <Grid container spacing={0.5} sx={{width: "320px", marginTop: "20px"}}>
+    <Grid
+      container
+      spacing={0.5}
+      sx={{
+        width: "320px",
+        marginTop: "20px",
+        "& img": {
+          cursor: "pointer",
+        },
+      }}
+    >
       <Grid item xs={6}>
         <a href="https://google.com" target="_blank" rel="noopener noreferrer">
           <Image
