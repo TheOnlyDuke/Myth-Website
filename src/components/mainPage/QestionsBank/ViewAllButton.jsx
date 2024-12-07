@@ -1,6 +1,9 @@
+"use client";
 import { Button } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 export default function ViewAllButton() {
+  const router = useRouter();
   return (
     <Button
       sx={{
@@ -11,6 +14,9 @@ export default function ViewAllButton() {
         margin: { xs: " 30px auto 0 auto", sm: undefined },
         width: "235px",
         zIndex: 999,
+      }}
+      onClick={() => {
+        router.push("/questions");
       }}
     >
       مشاهده همه سوالات

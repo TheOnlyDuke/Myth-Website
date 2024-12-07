@@ -1,14 +1,7 @@
 "use client";
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import {
-  Box,
-  Container,
-  Typography,
-  Autocomplete,
-  TextField,
-  SvgIcon,
-} from "@mui/material";
+import { Typography, Autocomplete, TextField } from "@mui/material";
 import {
   InputField,
   PasswordField,
@@ -102,7 +95,7 @@ export default function Page() {
             fontWeight: "1000",
             letterSpacing: "-0.25pt",
             marginBottom: "50px",
-          }}  
+          }}
         >
           ثبت نام در سیگما
         </Typography>
