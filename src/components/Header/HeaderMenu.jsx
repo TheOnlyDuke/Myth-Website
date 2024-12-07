@@ -45,7 +45,10 @@ export default function HeaderMenu({ handleMouseLeave, openMenu }) {
           {openMenu === "subjects" ? (
             subjects.map((each) => (
               <Grid xs={12} sm={6} md={4} lg={3} key={each.id}>
-                <Link href={`/learning/${each.name}`}>
+                <Link
+                  href={`/learning/${each.name}`}
+                  onClick={handleMouseLeave}
+                >
                   <CategoryPaper
                     title={each.name}
                     difficulty={
@@ -62,7 +65,7 @@ export default function HeaderMenu({ handleMouseLeave, openMenu }) {
               </Grid>
             ))
           ) : (
-            <HeaderBlogsPaper items={blogs} />
+            <HeaderBlogsPaper items={blogs} onClick={handleMouseLeave} />
           )}
         </Grid>
       </Box>

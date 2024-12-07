@@ -2,7 +2,7 @@ import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { Fragment } from "react";
 import HeaderBlogsItem from "./HeaderBlogsGridItem";
 
-export default function HeaderBlogsPaper({ items }) {
+export default function HeaderBlogsPaper({ items, onClick }) {
   const groupedItems = [];
   for (let i = 0; i < items.length; i += 3) {
     groupedItems.push(items.slice(i, i + 3));
@@ -19,13 +19,14 @@ export default function HeaderBlogsPaper({ items }) {
                 key={item.id}
                 height="50%"
                 p={0}
-                paddingBottom={item.id%3 === 1 ? "7.5px" : 0}
-                paddingTop={item.id%3 === 2 ? "7.5px" : 0}
+                paddingBottom={item.id % 3 === 1 ? "7.5px" : 0}
+                paddingTop={item.id % 3 === 2 ? "7.5px" : 0}
               >
                 <HeaderBlogsItem
                   icon={item.icon}
                   title={item.title}
                   description={item.description}
+                  onClick={onClick}
                 />
               </Grid>
             ))}
@@ -36,6 +37,7 @@ export default function HeaderBlogsPaper({ items }) {
                 icon={group[2].icon}
                 title={group[2].title}
                 description={group[2].description}
+                onClick={onClick}
               />
             </Grid>
           )}

@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, TextField, Typography } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import { useState, useCallback } from "react";
 import {
   SubmitButton,
@@ -9,9 +9,12 @@ import {
   AuthForm,
 } from "@/components/auth";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
 
 function LoginPage() {
   const router = useRouter();
+  const { SET_ACCESS_TOKEN, SET_USER_INFO } = useAuth();
+  const [error, setError] = useState("");
   const [isLoadingLogin, setIsLoadingLogin] = useState(false);
   const [formData, setFormData] = useState({
     password: "",
@@ -27,6 +30,7 @@ function LoginPage() {
     async (e) => {
       e.preventDefault();
       setError("");
+      setIsLoadingLogin(true);
 
       try {
         const response = await fetch(
@@ -45,7 +49,20 @@ function LoginPage() {
         );
         const data = await response.json();
         if (response.ok) {
-          console.log(data.token);
+          localStorage.setItem("ACCESS_TOKEN", data.token);
+          SET_ACCESS_TOKEN(data.token);
+          const userInfoResponse = await fetch(
+            "http://77.237.82.221:8000/accounts/profile/",
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${data.token}`,
+              },
+            }
+          );
+          const userInfoData = await userInfoResponse.json();
+          SET_USER_INFO(userInfoData);
           router.push(`/dashboard/`);
         } else {
           setError(data.error || "ورود موفقیت آمیز نبود");
@@ -54,10 +71,10 @@ function LoginPage() {
         setError("مشکل در برقراری ارتباط با سرور");
         console.error("Error:", error);
       } finally {
-        setIsLoading(false);
+        setIsLoadingLogin(false);
       }
     },
-    [formData, router]
+    [formData, router, SET_ACCESS_TOKEN, SET_USER_INFO]
   );
 
   return (

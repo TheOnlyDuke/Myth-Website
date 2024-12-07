@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import { useSearchParams } from "next/navigation";
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function VerifyPage({}) {
   const router = useRouter();
@@ -11,6 +12,8 @@ export default function VerifyPage({}) {
   const phone = searchParams.get("phone");
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { SET_ACCESS_TOKEN, SET_USER_INFO } = useAuth();
 
   const handleOTPChange = (value) => {
     setOtp(value);
@@ -20,7 +23,7 @@ export default function VerifyPage({}) {
     async (e) => {
       e.preventDefault();
       setError("");
-      console.log(otp);
+      setIsLoading(true);
 
       try {
         const response = await fetch(
@@ -38,7 +41,23 @@ export default function VerifyPage({}) {
         );
         const data = await response.json();
         if (response.ok) {
-          console.log(data.token);
+          localStorage.setItem("ACCESS_TOKEN", data.token);
+          SET_ACCESS_TOKEN(data.token);
+
+          const userInfoResponse = await fetch(
+            "http://77.237.82.221:8000/accounts/profile/",
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${data.token}`,
+              },
+            }
+          );
+          const userInfoData = await userInfoResponse.json();
+          SET_USER_INFO(userInfoData);
+
+          // Now that both the token and user info are set, redirect
           router.push(`/dashboard/`);
         } else {
           setError(data.error || "ثبت نام موفقیت آمیز نبود");
@@ -47,9 +66,10 @@ export default function VerifyPage({}) {
         setError("مشکل در برقراری ارتباط با سرور");
         console.error("Error:", error);
       } finally {
+        setIsLoading(false);
       }
     },
-    [otp]
+    [otp, SET_ACCESS_TOKEN, SET_USER_INFO, router]
   );
 
   return (
@@ -62,10 +82,11 @@ export default function VerifyPage({}) {
       </Typography>
       <OTPInput length={4} onChange={handleOTPChange} />
       <SubmitButton
-        isLoading={otp.length !== 4}
+        isLoading={isLoading}
         animation={false}
         text="بررسی کد تایید"
       />
+      {error && <Typography color="error">{error}</Typography>}
     </AuthForm>
   );
 }

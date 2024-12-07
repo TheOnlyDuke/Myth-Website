@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggleButton";
 import HeaderMenu from "./HeaderMenu";
+import { useAuth } from "@/contexts/AuthContext";
 
 const HeaderStyles = {
   flex: {
@@ -50,6 +51,8 @@ function Header() {
   const [isPassedHero, setIsPassedHero] = useState(false);
   const lastScrollY = useRef(0);
   const headerRef = useRef(null);
+  const { USER_INFO, ACCESS_TOKEN, SET_USER_INFO, SET_ACCESS_TOKEN } =
+    useAuth();
 
   const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
@@ -105,7 +108,7 @@ function Header() {
     timeoutRef.current = setTimeout(() => {
       setOpenMenu(null);
       enableScroll();
-    }, 300);
+    }, 50);
   };
 
   return (
@@ -139,7 +142,9 @@ function Header() {
             >
               <Link href="/" style={{ "margin-left": "15px" }}>
                 {/* <Image src={""} alt="لوگو تیم" /> */}
-                <Typography variant="smallTitle" sx={{cursor: "pointer"}}>سیگما</Typography>
+                <Typography variant="smallTitle" sx={{ cursor: "pointer" }}>
+                  سیگما
+                </Typography>
               </Link>
               <Box
                 sx={{
@@ -155,16 +160,20 @@ function Header() {
                 <Link
                   href="/learning"
                   onMouseEnter={() => handleMouseEnter("subjects")}
+                  onClick={handleMouseLeave}
                 >
                   مباحث
                 </Link>
                 <Link
                   href="/blogs"
                   onMouseEnter={() => handleMouseEnter("belogs")}
+                  onClick={handleMouseLeave}
                 >
                   وبلاگ
                 </Link>
-                <Link href="/leaderboard">لیدربورد</Link>
+                <Link href="/leaderboard" onClick={handleMouseLeave}>
+                  لیدربورد
+                </Link>
               </Box>
             </Box>
             <Box
@@ -176,9 +185,15 @@ function Header() {
               }}
             >
               <Typography sx={HeaderStyles.SignUpButton}>
-                <Link href="/auth" style={{ cursor: "pointer" }}>
-                  ورود یا ثبت نام
-                </Link>
+                {USER_INFO ? (
+                  <Link href="/dashboard" style={{ cursor: "pointer" }}>
+                    داشبورد - {USER_INFO.full_name}
+                  </Link>
+                ) : (
+                  <Link href="/auth" style={{ cursor: "pointer" }}>
+                    ورود یا ثبت نام
+                  </Link>
+                )}
               </Typography>
               <ThemeToggle />
             </Box>

@@ -1,9 +1,3 @@
 export default function LearningMainPage() {
-
-
-  return (
-    <main>
-      <h1>In Development</h1>
-    </main>
-  )
+  return <main style={{ flex: 1 }}></main>;
 }

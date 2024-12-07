@@ -39,7 +39,11 @@ export default function Home() {
         maxWidth="lg"
         className="flexColumn"
         disableGutters
-        sx={{ gap: { xs: "100px", sm: "150px" }, paddingBottom: "150px", px: "25px" }}
+        sx={{
+          gap: { xs: "100px", sm: "150px" },
+          paddingBottom: "150px",
+          px: "25px",
+        }}
       >
         <HeroSection />
         <IntroductionMenu />
