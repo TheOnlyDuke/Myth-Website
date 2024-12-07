@@ -14,7 +14,7 @@ export default function Dashboard() {
   useEffect(() => {
     const token = localStorage.getItem("ACCESS_TOKEN");
     if (token && !USER_INFO) {
-      fetch("http://77.237.82.221:8000/accounts/profile/", {
+      fetch("/api/accounts/profile/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

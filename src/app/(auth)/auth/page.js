@@ -49,23 +49,20 @@ export default function Page() {
       }
 
       try {
-        const response = await fetch(
-          "http://77.237.82.221:8000/accounts/register/",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "X-Requested-With": "XMLHttpRequest",
-            },
-            body: JSON.stringify({
-              email: formData.email || null,
-              full_name: formData.username,
-              password: formData.password,
-              phone_number: formData.phoneNumber,
-              // universityId: formData.university ? formData.university.id : null,
-            }),
-          }
-        );
+        const response = await fetch("/api/accounts/register/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest",
+          },
+          body: JSON.stringify({
+            email: formData.email || null,
+            full_name: formData.username,
+            password: formData.password,
+            phone_number: formData.phoneNumber,
+            // universityId: formData.university ? formData.university.id : null,
+          }),
+        });
         const data = await response.json();
         if (response.ok) {
           router.push(
