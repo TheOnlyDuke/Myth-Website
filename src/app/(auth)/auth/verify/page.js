@@ -26,34 +26,28 @@ export default function VerifyPage({}) {
       setIsLoading(true);
 
       try {
-        const response = await fetch(
-          "http://77.237.82.221:8000/accounts/verify/",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "X-Requested-With": "XMLHttpRequest",
-            },
-            body: JSON.stringify({
-              code: otp,
-            }),
-          }
-        );
+        const response = await fetch("/api/accounts/verify/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest",
+          },
+          body: JSON.stringify({
+            code: otp,
+          }),
+        });
         const data = await response.json();
         if (response.ok) {
           localStorage.setItem("ACCESS_TOKEN", data.token);
           SET_ACCESS_TOKEN(data.token);
 
-          const userInfoResponse = await fetch(
-            "http://77.237.82.221:8000/accounts/profile/",
-            {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${data.token}`,
-              },
-            }
-          );
+          const userInfoResponse = await fetch("/api/accounts/profile/", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${data.token}`,
+            },
+          });
           const userInfoData = await userInfoResponse.json();
           SET_USER_INFO(userInfoData);
 
