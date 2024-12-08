@@ -21,8 +21,8 @@ const Custom404 = () => {
         404
       </Typography>
       <Typography variant="title" component="h2" sx={{ mb: 4 }}>
-        یوک!! کوجه آمدی یره!
-        <br /> مطمئنی آدرسه درست وارد کردی؟
+        آمممم... شما اینجا چیکار میکنی؟
+        <br /> مطمئنی آدرس رو درست وارد کردی؟
       </Typography>
       <Link href="/" passHref>
         <Button variant="text" color="primary" sx={{ mt: 2 }}>

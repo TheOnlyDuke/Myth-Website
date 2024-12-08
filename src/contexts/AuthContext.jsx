@@ -7,11 +7,12 @@ export const AuthProvider = ({ children }) => {
   const [USER_INFO, SET_USER_INFO] = useState(null);
   const [ACCESS_TOKEN, SET_ACCESS_TOKEN] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [lastQuestion, setLastQuestion] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("ACCESS_TOKEN");
     if (token) {
-      fetch("/api/accounts/profile/", {
+      fetch("http://77.237.82.221:8000/accounts/profile/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -49,6 +50,8 @@ export const AuthProvider = ({ children }) => {
         ACCESS_TOKEN,
         SET_ACCESS_TOKEN,
         isLoading,
+        lastQuestion,
+        setLastQuestion,
       }}
     >
       {children}

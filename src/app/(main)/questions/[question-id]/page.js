@@ -1,0 +1,127 @@
+"use client";
+import QuestionOptions from "@/components/mainPage/QestionsBank/QestionOptions";
+import { Box, Typography } from "@mui/material";
+import { useState, useEffect, useCallback } from "react";
+import Grid from "@mui/material/Unstable_Grid2";
+
+export default function EachQuestionPage({ params }) {
+  const [error, setError] = useState("");
+  const [qData, setQData] = useState({});
+  const [stageNumber, setStageNumber] = useState(1);
+
+  let id = params["question-id"];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`/api/question/${id}/1/`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest",
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Failed to fetch Question Data");
+        }
+        const data = await response.json();
+        setQData(data.stage);
+        setStageNumber(data.stage.stage_number); // Set the stage number here
+      } catch (error) {
+        setError(error.message);
+        console.error("Error:", error);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+
+  const handleSubmit = useCallback(
+    async (option) => {
+      setError("");
+      try {
+        const response = await fetch(`/api/question/${id}/${stageNumber}/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest",
+          },
+          body: JSON.stringify({ option: `${option}` }),
+        });
+        const data = await response.json();
+        if (response.ok) {
+          if (data.message == "Finished all stages of this question.")
+            setQData("Finished all stages of this question.");
+          else {
+            setQData(data.stage);
+            setStageNumber(data.stage.stage_number);
+          }
+        } else {
+          throw new Error(data.error || "Failed to submit the answer");
+        }
+      } catch (error) {
+        setError("مطئنی ؟ یه بار دیگه تلاش کن");
+        console.error("Error:", error);
+      }
+    },
+    [id, stageNumber]
+  );
+
+  return (
+    <Grid
+      container
+      maxWidth="lg"
+      spacing={2}
+      component="main"
+      sx={{ flex: 1, margin: "175px auto 25px auto", width: "100%" }}
+    >
+      {qData == "Finished all stages of this question." ? (
+        <Typography variant="display">آفرین بوس بهت</Typography>
+      ) : (
+        <>
+          <Grid xs={12}>
+            <Typography variant="title"> </Typography>
+            <Typography variant="normalBody">
+              حالا گام بعدیت رو انتخاب کن
+            </Typography>
+          </Grid>{" "}
+          {error && (
+            <Grid xs={12}>
+              <Typography variant="normalBody" color="error" textAlign="center">
+                {error}
+              </Typography>
+            </Grid>
+          )}
+          <Grid xs={12}>
+            <QuestionOptions
+              option={1}
+              latex={qData.option1_title}
+              handleSubmit={handleSubmit}
+            />
+          </Grid>
+          <Grid xs={12}>
+            <QuestionOptions
+              option={2}
+              latex={qData.option2_title}
+              handleSubmit={handleSubmit}
+            />
+          </Grid>
+          <Grid xs={12}>
+            <QuestionOptions
+              option={3}
+              latex={qData.option3_title}
+              handleSubmit={handleSubmit}
+            />
+          </Grid>
+          <Grid xs={12}>
+            <QuestionOptions
+              option={4}
+              latex={qData.option4_title}
+              handleSubmit={handleSubmit}
+            />
+          </Grid>
+        </>
+      )}
+    </Grid>
+  );
+}
