@@ -98,7 +98,7 @@ export default function EachQuestionPage({ params }) {
           variant="display"
           sx={{ display: "flex", justifyContent: "cneter" }}
         >
-          آفرین بوس بهت
+          آفرین و درود
         </Typography>
       ) : (
         <>
