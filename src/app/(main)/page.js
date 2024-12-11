@@ -6,6 +6,7 @@ import {
   IntroductionMenu,
   HeroSection,
 } from "@/components/mainPage";
+import ResponsiveContainer from "@/components/ResponsiveContainer";
 
 export default function Home() {
   const mainPageStyles = {
@@ -36,13 +37,12 @@ export default function Home() {
   return (
     <Box component="main" sx={mainPageStyles}>
       <Container
-        maxWidth="lg"
-        className="flexColumn"
         disableGutters
         sx={{
-          gap: { xs: "100px", sm: "150px" },
-          paddingBottom: "150px",
-          px: "25px",
+          display: "flex",
+          flexDirection: "column",
+          gap: { sx: "100px", sm: "150px" },
+          marginBottom: "150px",
         }}
       >
         <HeroSection />

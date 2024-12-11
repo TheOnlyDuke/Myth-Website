@@ -1,5 +1,5 @@
-import { Paper } from "@mui/material";
-import { BlockMath } from "react-katex";
+import { Paper, Typography } from "@mui/material";
+import { BlockMath, InlineMath } from "react-katex";
 import "katex/dist/katex.min.css";
 
 export default function QuestionOptions({ option, latex, handleSubmit }) {
@@ -17,13 +17,13 @@ export default function QuestionOptions({ option, latex, handleSubmit }) {
         borderColor: "var(--border)",
         borderRadius: "var(--border-radius)",
         transition: "all 200ms ease-out",
-        direction: "ltr",
+        direction: "rtl",
         cursor: "pointer",
         "*": {
           transition: "inherit",
           cursor: "inherit",
         },
-        p: "30px",
+        p: "25px",
         ":hover": {
           backgroundColor: "var(--black-BG)",
           ".katex *": {
@@ -41,7 +41,9 @@ export default function QuestionOptions({ option, latex, handleSubmit }) {
         },
       }}
     >
-      <BlockMath math={latex} />
+      <Typography variant="normalBodyCap" sx={{ direction: "ltr" }}>
+        <InlineMath math={latex} />
+      </Typography>
     </Paper>
   );
 }

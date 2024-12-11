@@ -3,11 +3,21 @@ import QuestionOptions from "@/components/mainPage/QestionsBank/QestionOptions";
 import { Box, Typography } from "@mui/material";
 import { useState, useEffect, useCallback } from "react";
 import Grid from "@mui/material/Unstable_Grid2";
+import { BlockMath } from "react-katex";
+import "katex/dist/katex.min.css";
 
 export default function EachQuestionPage({ params }) {
   const [error, setError] = useState("");
   const [qData, setQData] = useState({});
   const [stageNumber, setStageNumber] = useState(1);
+  const [qTitle, setQTitle] = useState("");
+
+  const titles = [
+    "داریم :",
+    "خب خب داری درست پیش میری الان داریم:",
+    "ببینیم چی داری",
+    "بعدی!",
+  ];
 
   let id = params["question-id"];
 
@@ -26,7 +36,7 @@ export default function EachQuestionPage({ params }) {
         }
         const data = await response.json();
         setQData(data.stage);
-        setStageNumber(data.stage.stage_number); // Set the stage number here
+        setStageNumber(data.stage.stage_number);
       } catch (error) {
         setError(error.message);
         console.error("Error:", error);
@@ -50,9 +60,10 @@ export default function EachQuestionPage({ params }) {
         });
         const data = await response.json();
         if (response.ok) {
-          if (data.message == "Finished all stages of this question.")
+          if (data.message === "Finished all stages of this question.") {
             setQData("Finished all stages of this question.");
-          else {
+          } else {
+            setQTitle(qData[`option${option}_title`] || "");
             setQData(data.stage);
             setStageNumber(data.stage.stage_number);
           }
@@ -64,7 +75,7 @@ export default function EachQuestionPage({ params }) {
         console.error("Error:", error);
       }
     },
-    [id, stageNumber]
+    [id, stageNumber, qData]
   );
 
   return (
@@ -73,18 +84,49 @@ export default function EachQuestionPage({ params }) {
       maxWidth="lg"
       spacing={2}
       component="main"
-      sx={{ flex: 1, margin: "175px auto 25px auto", width: "100%" }}
+      sx={{
+        flex: 1,
+        margin: "175px auto 25px auto",
+        width: "100%",
+        border: "10px solid",
+        p: "35px",
+        borderRadius: "15px",
+      }}
     >
-      {qData == "Finished all stages of this question." ? (
-        <Typography variant="display">آفرین بوس بهت</Typography>
+      {qData === "Finished all stages of this question." ? (
+        <Typography
+          variant="display"
+          sx={{ display: "flex", justifyContent: "cneter" }}
+        >
+          آفرین بوس بهت
+        </Typography>
       ) : (
         <>
-          <Grid xs={12}>
-            <Typography variant="title"> </Typography>
+          <Grid xs={12} sx={{ position: "relative" }}>
+            <Typography
+              variant="normalBodyCap"
+              sx={{ position: "absolute", top: 0, left: 0 }}
+            >
+              مرحله : {stageNumber}
+            </Typography>
+            <Typography variant="normalBody">
+              {titles[(stageNumber - 1) % titles.length]}
+            </Typography>
+            <Typography
+              variant="title"
+              sx={{
+                direction: "ltr",
+                "& *": {
+                  direction: "inherit",
+                },
+              }}
+            >
+              <BlockMath math={qTitle} />
+            </Typography>
             <Typography variant="normalBody">
               حالا گام بعدیت رو انتخاب کن
             </Typography>
-          </Grid>{" "}
+          </Grid>
           {error && (
             <Grid xs={12}>
               <Typography variant="normalBody" color="error" textAlign="center">
