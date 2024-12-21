@@ -41,15 +41,20 @@ export const blogs = [
     id: 1,
     title: "مقالات آموزشی",
     description: "نوشته های با هدف آگاهی بیشتر",
-    icon: OpenBook,
+    icon: <OpenBook />,
   },
   {
     id: 2,
     title: "راهنمای استفاده",
     description: "آموزش استفاده از خدمات مجموعه",
-    icon: RescueTube,
+    icon: <RescueTube />,
   },
-  { id: 3, title: "جزوات درسی", description: "جمع بندیت با ما", icon: Pencil },
+  {
+    id: 3,
+    title: "جزوات درسی",
+    description: "جمع بندیت با ما",
+    icon: <Pencil />,
+  },
 ];
 
 import SubjectIntro1 from "../../public/images/SubjectIntro/SubjectIntro1.png";
@@ -77,7 +82,7 @@ export const Questions = [
     group: "تابع ها",
     difficulty: "سخت",
     score: 13,
-    icon: Layers,
+    icon: <Layers />,
     latex: "g(x) = sin(x)",
   },
   {
@@ -86,7 +91,7 @@ export const Questions = [
     group: "تابع ها",
     difficulty: "سخت",
     score: 13,
-    icon: Layers,
+    icon: <Layers />,
     latex: "g(x) = sin(x)",
   },
   {
@@ -95,7 +100,7 @@ export const Questions = [
     group: "تابع ها",
     difficulty: "سخت",
     score: 13,
-    icon: Layers,
+    icon: <Layers />,
     latex: "g(x) = sin(x)",
   },
   {
@@ -104,7 +109,7 @@ export const Questions = [
     group: "تابع ها",
     difficulty: "سخت",
     score: 13,
-    icon: Layers,
+    icon: <Layers />,
     latex: "g(x) = sin(x)",
   },
   {
@@ -113,7 +118,7 @@ export const Questions = [
     group: "تابع ها",
     difficulty: "سخت",
     score: 13,
-    icon: Layers,
+    icon: <Layers />,
     latex: "g(x) = sin(x)",
   },
   {
@@ -122,7 +127,7 @@ export const Questions = [
     group: "تابع ها",
     difficulty: "سخت",
     score: 13,
-    icon: Layers,
+    icon: <Layers />,
     latex: "g(x) = sin(x)",
   },
   {
@@ -131,7 +136,7 @@ export const Questions = [
     group: "تابع ها",
     difficulty: "سخت",
     score: 13,
-    icon: Layers,
+    icon: <Layers />,
     latex: "g(x) = sin(x)",
   },
   {
@@ -140,7 +145,7 @@ export const Questions = [
     group: "تابع ها",
     difficulty: "سخت",
     score: 13,
-    icon: Layers,
+    icon: <Layers />,
     latex: "g(x) = sin(x)",
   },
 ];

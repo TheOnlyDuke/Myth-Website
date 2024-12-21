@@ -2,14 +2,14 @@ export default function Icons({
   d,
   isHovered,
   hoverable = true,
-  baseColor = "var(--active-text)",
-  link = true
+  baseColor = "var(--activeText)",
+  link = true,
 }) {
   const iconStyle = {
     stroke: !hoverable
       ? baseColor
       : isHovered
-      ? "var(--black-BG)"
+      ? "var(--blackBG)"
       : "var(--secondary-text)",
     fill: !hoverable ? "none" : isHovered ? baseColor : "none",
     strokeWidth: 1.5,

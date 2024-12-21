@@ -10,7 +10,6 @@ export default function CategoryPaper({
   numOfEpisodes,
   icon,
 }) {
-  
   return (
     <Grid2
       sx={{
@@ -22,22 +21,26 @@ export default function CategoryPaper({
         direction: "ltr",
         transition: "background-color 250ms ease-in-out",
         cursor: "pointer",
-        "& *" : {
-          cursor: "inherit"
+        "& *": {
+          cursor: "inherit",
         },
         "&:hover": {
-          backgroundColor: "var(--black-BG)",
-          '.MuiTypography-normalBody': {
-            color: "var(--active-text)",
+          backgroundColor: "var(--blackBG)",
+          ".MuiTypography-normalBody": {
+            color: "var(--activeText)",
           },
-          img: {
-            display: "none",
+          "& img": {
+            opacity: 0,
+            position: "absolute",
           },
-          svg: {
-            display: "inline-block",
+          "& .MuiSvgIcon-root": {
+            display: "block",
+            "& path": {
+              stroke: "var(--activeText)",
+            },
           },
         },
-        '.MuiTypography-normalBody': {
+        ".MuiTypography-normalBody": {
           transition: "color 350ms ease-in-out",
         },
       }}
@@ -49,10 +52,25 @@ export default function CategoryPaper({
             display: "flex",
             alignItems: "center",
             cursor: "pointer",
+            "& img": {
+              transition: "opacity 0.3s ease",
+            },
+            "& .MuiSvgIcon-root": {
+              display: "none",
+            },
+            [`${Grid2}:hover &`]: {
+              "& img": {
+                opacity: 0,
+                position: "absolute",
+              },
+              "& .MuiSvgIcon-root": {
+                display: "block",
+              },
+            },
           }}
         >
           <Image src={icon} width={30} height={30} alt={title} />
-          <ArrowLeft sx={{width: "30px", height : "30px", display: "none"}} />
+          <ArrowLeft />
         </Grid2>
         <Grid2
           xs={10}
@@ -64,10 +82,11 @@ export default function CategoryPaper({
           }}
         >
           <Typography variant="normalBody">{title}</Typography>
-          <Typography variant="smallBodyCap" sx={{ fontSize: "15px", color: "var(--secondary-text)" }}>
-            {difficulty}{" "}
-            <DotDivider />{" "}
-            {numOfEpisodes} مبحث آموزشی
+          <Typography
+            variant="smallBodyCap"
+            sx={{ fontSize: "15px", color: "var(--secondary-text)" }}
+          >
+            {difficulty} <DotDivider /> {numOfEpisodes} مبحث آموزشی
           </Typography>
         </Grid2>
       </Grid2>

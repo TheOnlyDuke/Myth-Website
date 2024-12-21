@@ -8,7 +8,7 @@ export default function GridView({ questions }) {
       spacing={2}
       sx={{
         position: "relative",
-        display: { xs: 'none', sm: 'flex' },
+        display: { xs: "none", sm: "flex" },
         "&::before": {
           content: '""',
           position: "absolute",
@@ -17,7 +17,7 @@ export default function GridView({ questions }) {
           right: "0",
           bottom: "0",
           background:
-            "linear-gradient(to bottom, rgb(0,0,0,0), var(--not-active-BG) 90%)",
+            "linear-gradient(to bottom, rgb(0,0,0,0), var(--notActiveBG) 90%)",
           pointerEvents: "none",
           zIndex: 998,
         },

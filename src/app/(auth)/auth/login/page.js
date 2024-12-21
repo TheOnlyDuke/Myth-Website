@@ -11,10 +11,6 @@ import {
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 
-const proxy = "https://cors-anywhere.herokuapp.com/";
-const backendUrl = "http://77.237.82.221:8000/accounts/login/";
-const fullUrl = `${proxy}${backendUrl}`;
-
 function LoginPage() {
   const router = useRouter();
   const { SET_ACCESS_TOKEN, SET_USER_INFO } = useAuth();
@@ -37,28 +33,34 @@ function LoginPage() {
       setIsLoadingLogin(true);
 
       try {
-        const response = await fetch("/api/accounts/login/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Requested-With": "XMLHttpRequest",
-          },
-          body: JSON.stringify({
-            phone_number: formData.phoneNumber,
-            password: formData.password,
-          }),
-        });
+        const response = await fetch(
+          "http://77.237.82.221:8000/accounts/login/",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Requested-With": "XMLHttpRequest",
+            },
+            body: JSON.stringify({
+              phone_number: formData.phoneNumber,
+              password: formData.password,
+            }),
+          }
+        );
         const data = await response.json();
         if (response.ok) {
           localStorage.setItem("ACCESS_TOKEN", data.token);
           SET_ACCESS_TOKEN(data.token);
-          const userInfoResponse = await fetch("/api/accounts/profile/", {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${data.token}`,
-            },
-          });
+          const userInfoResponse = await fetch(
+            "http://77.237.82.221:8000/accounts/profile/",
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${data.token}`,
+              },
+            }
+          );
           const userInfoData = await userInfoResponse.json();
           SET_USER_INFO(userInfoData);
           router.push(`/dashboard/`);

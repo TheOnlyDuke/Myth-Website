@@ -9,9 +9,10 @@ export default function QuestionsPage() {
   const [qData, setQData] = useState([]);
 
   useEffect(() => {
+    const BACKEND_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/question/", {
+        const response = await fetch(`${BACKEND_BASE_URL}/question/`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

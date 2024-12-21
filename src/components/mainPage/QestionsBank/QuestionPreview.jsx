@@ -23,7 +23,7 @@ export default function QuestionPreview({
           className="flexColumn"
           sx={{
             gap: "50px",
-            backgroundColor: "var(--not-active-BG)",
+            backgroundColor: "var(--notActiveBG)",
             boxShadow: "none",
             border: "1px solid",
             borderColor: "var(--border)",
@@ -37,18 +37,18 @@ export default function QuestionPreview({
             },
             p: "30px",
             ":hover": {
-              backgroundColor: "var(--black-BG)",
+              backgroundColor: "var(--blackBG)",
               ".katex *": {
-                color: "var(--active-text)",
+                color: "var(--activeText)",
               },
               ".MuiTypography-normalBody": {
-                color: "var(--active-text)",
+                color: "var(--activeText)",
               },
               path: {
-                stroke: "var(--not-active-BG)",
+                stroke: "var(--notActiveBG)",
               },
               ".MuiTypography-smallBodyCap": {
-                color: "var(--secondary-active-text)",
+                color: "var(--secondaryActiveText)",
               },
             },
           }}

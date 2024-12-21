@@ -7,20 +7,36 @@ import CssBaseline from "@mui/material/CssBaseline";
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
+  const [mounted, setMounted] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== "undefined") {
-      const savedTheme = localStorage.getItem("theme");
+    if (typeof window === "undefined") return false;
+
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
       return savedTheme === "dark";
     }
-    return false;
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     const theme = isDarkMode ? darkTheme : lightTheme;
+
     document.documentElement.setAttribute(
       "data-theme",
       isDarkMode ? "dark" : "light"
     );
+
+    Object.entries(theme.palette.custom).forEach(([key, value]) => {
+      document.documentElement.style.setProperty(`--${key}`, value);
+    });
+
     document.documentElement.style.setProperty(
       "--primary-text",
       theme.palette.text.primary
@@ -29,49 +45,18 @@ export const ThemeProvider = ({ children }) => {
       "--secondary-text",
       theme.palette.text.secondary
     );
-    document.documentElement.style.setProperty(
-      "--active-text",
-      theme.palette.custom.activeText
-    );
-    document.documentElement.style.setProperty(
-      "--secondary-active-text",
-      theme.palette.custom.secActiveText
-    );
-    document.documentElement.style.setProperty(
-      "--active-BG",
-      theme.palette.custom.activeBG
-    );
-    document.documentElement.style.setProperty(
-      "--third-active-BG",
-      theme.palette.custom.thirdActiveBG
-    );
-    document.documentElement.style.setProperty(
-      "--not-active-BG",
-      theme.palette.custom.notActiveBG
-    );
-    document.documentElement.style.setProperty(
-      "--black-BG",
-      theme.palette.custom.blackBG
-    );
-    document.documentElement.style.setProperty(
-      "--footer-BG",
-      theme.palette.custom.footerBG
-    );
-    document.documentElement.style.setProperty(
-      "--border",
-      theme.palette.custom.border
-    );
-    document.documentElement.style.setProperty(
-      "--secondary-active-BG",
-      theme.palette.custom.secActiveBG
-    );
-
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-  }, [isDarkMode]);
+
+    document.body.style.backgroundColor = theme.palette.background.default;
+  }, [isDarkMode, mounted]);
 
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>

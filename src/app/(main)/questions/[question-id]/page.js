@@ -6,6 +6,8 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
 
+const simpleArray = [...Array(4)];
+
 export default function EachQuestionPage({ params }) {
   const [error, setError] = useState("");
   const [qData, setQData] = useState({});
@@ -20,11 +22,11 @@ export default function EachQuestionPage({ params }) {
   ];
 
   let id = params["question-id"];
-
+  const BACKEND_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/question/${id}/1/`, {
+        const response = await fetch(`${BACKEND_BASE_URL}/question/${id}/1/`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -50,14 +52,17 @@ export default function EachQuestionPage({ params }) {
     async (option) => {
       setError("");
       try {
-        const response = await fetch(`/api/question/${id}/${stageNumber}/`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Requested-With": "XMLHttpRequest",
-          },
-          body: JSON.stringify({ option: `${option}` }),
-        });
+        const response = await fetch(
+          `${BACKEND_BASE_URL}/question/${id}/${stageNumber}/`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Requested-With": "XMLHttpRequest",
+            },
+            body: JSON.stringify({ option: `${option}` }),
+          }
+        );
         const data = await response.json();
         if (response.ok) {
           if (data.message === "Finished all stages of this question.") {
@@ -135,32 +140,14 @@ export default function EachQuestionPage({ params }) {
             </Grid>
           )}
           <Grid xs={12}>
-            <QuestionOptions
-              option={1}
-              latex={qData.option1_title}
-              handleSubmit={handleSubmit}
-            />
-          </Grid>
-          <Grid xs={12}>
-            <QuestionOptions
-              option={2}
-              latex={qData.option2_title}
-              handleSubmit={handleSubmit}
-            />
-          </Grid>
-          <Grid xs={12}>
-            <QuestionOptions
-              option={3}
-              latex={qData.option3_title}
-              handleSubmit={handleSubmit}
-            />
-          </Grid>
-          <Grid xs={12}>
-            <QuestionOptions
-              option={4}
-              latex={qData.option4_title}
-              handleSubmit={handleSubmit}
-            />
+            {simpleArray.map((each, index) => (
+              <QuestionOptions
+                key={index + 1}
+                option={index + 1}
+                latex={qData[`option${index + 1}_title`]}
+                handleSubmit={handleSubmit}
+              />
+            ))}
           </Grid>
         </>
       )}

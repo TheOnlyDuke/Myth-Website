@@ -16,15 +16,15 @@ const HeaderStyles = {
     height: "65px",
     m: "5px",
     marginLeft: "0",
-    backgroundColor: "var(--active-BG)",
+    backgroundColor: "var(--activeBG)",
     borderRadius: "15px",
-    color: "var(--active-text)",
+    color: "var(--activeText)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     transition: "background-color 250ms ease-in-out",
     ":hover": {
-      backgroundColor: "var(--black-BG)",
+      backgroundColor: "var(--blackBG)",
       cursor: "pointer",
     },
   },
@@ -51,8 +51,7 @@ function Header() {
   const [isPassedHero, setIsPassedHero] = useState(false);
   const lastScrollY = useRef(0);
   const headerRef = useRef(null);
-  const { USER_INFO, ACCESS_TOKEN, SET_USER_INFO, SET_ACCESS_TOKEN } =
-    useAuth();
+  const { USER_INFO } = useAuth();
 
   const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
@@ -117,7 +116,7 @@ function Header() {
         ref={headerRef}
         position="fixed"
         sx={{
-          backgroundColor: "var(--not-active-BG)",
+          backgroundColor: "var(--notActiveBG)",
           height: "fit-content",
           boxShadow: "none",
           py: "15px",

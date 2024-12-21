@@ -11,7 +11,7 @@ export default function DownloadSection({}) {
       sx={{
         width: "100%",
         height: { xs: "780px", sm: "1080px" },
-        backgroundColor: "var(--active-BG)",
+        backgroundColor: "var(--activeBG)",
         position: "relative",
         display: "flex",
         alignItems: "center",
@@ -19,9 +19,13 @@ export default function DownloadSection({}) {
         direction: "rtl",
       }}
     >
-      <Box sx={{ width: { sx: "350px", sm: "100%" }, p:"25px" }} maxWidth="lg" >
-        <Typography variant="title" sx={{ color: "var(--active-text)" }}>
-          با اپلیکیشن سیگما،<span style={{display: "block", color: "inherit"}}> هر روز ریاضی تمرین کنید</span>
+      <Box sx={{ width: { sx: "350px", sm: "100%" }, p: "25px" }} maxWidth="lg">
+        <Typography variant="title" sx={{ color: "var(--activeText)" }}>
+          با اپلیکیشن سیگما،
+          <span style={{ display: "block", color: "inherit" }}>
+            {" "}
+            هر روز ریاضی تمرین کنید
+          </span>
         </Typography>
         <DownloadFeaturesList />
         <DownloadAppsRatings />

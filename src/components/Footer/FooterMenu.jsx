@@ -6,7 +6,7 @@ export default function FooterMenu({ menuData, index }) {
   const titlesStyle = {
     fontSize: "20px",
     fontWeight: "600",
-    color: "var(--active-text)",
+    color: "var(--activeText)",
     marginBottom: "35px",
   };
 

@@ -18,12 +18,12 @@ const buttonStyle = {
     root: {
       fontFamily: "IRANYekanX, sans-serif",
       fontSize: "17px",
-      backgroundColor: "var(--active-BG)",
+      backgroundColor: "var(--activeBG)",
       color: "white",
       padding: "14px",
       borderRadius: "10px",
       "&:hover": {
-        backgroundColor: "var(--black-BG)",
+        backgroundColor: "var(--blackBG)",
       },
     },
   },
@@ -221,7 +221,7 @@ const getTypography = (theme) => ({
     fontSize: "20px",
     lineHeight: "180%",
     direction: "rtl",
-    fontWeight: "700"
+    fontWeight: "700",
   },
   normalBody: {
     fontFamily: "IRANYekanX, sans-serif",
@@ -249,8 +249,8 @@ const getTypography = (theme) => ({
     lineHeight: "180%",
     direction: "rtl",
     fontSize: "15px",
-    color: "#808080"
-  }
+    color: "#808080",
+  },
 });
 
 const createCustomTheme = (mode) => {
@@ -275,7 +275,7 @@ const createCustomTheme = (mode) => {
             },
             custom: {
               activeText: "#fff",
-              secActiveText : "#969696",
+              secActiveText: "#969696",
               notActiveBG: "#fff",
               activeBG: "#462BEF",
               secActiveBG: "#EFA71F",
@@ -303,7 +303,7 @@ const createCustomTheme = (mode) => {
             },
             custom: {
               activeText: "#FFFFFF",
-              secActiveText : "#B3B3B3",
+              secActiveText: "#B3B3B3",
               notActiveBG: "#121212",
               activeBG: "#3C83EE",
               secActiveBG: "#2FE860",

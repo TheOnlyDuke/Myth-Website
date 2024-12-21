@@ -43,9 +43,7 @@ export default function MobileNavigation({ totalSlides }) {
             height: "8px",
             borderRadius: "4px",
             backgroundColor:
-              index === activeIndex
-                ? "var(--active-BG)"
-                : "var(--black-BG)",
+              index === activeIndex ? "var(--activeBG)" : "var(--blackBG)",
             transition: "all 0.3s ease-in-out",
             cursor: "pointer",
           }}

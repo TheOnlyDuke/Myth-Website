@@ -13,7 +13,7 @@ export default function HeaderBlogsItem({ title, description, icon, onClick }) {
           direction: "ltr",
           height: "100%",
           width: "100%",
-          backgroundColor: "var(--not-active-BG)",
+          backgroundColor: "var(--notActiveBG)",
           boxShadow: "none",
           transition: "background-color 250ms ease-in-out",
           cursor: "pointer",
@@ -21,11 +21,11 @@ export default function HeaderBlogsItem({ title, description, icon, onClick }) {
             cursor: "inherit",
           },
           "&:hover": {
-            backgroundColor: "var(--black-BG)",
+            backgroundColor: "var(--blackBG)",
             ".MuiTypography-normalBody": {
-              color: "var(--active-text)",
+              color: "var(--activeText)",
             },
-            svg: { fill: "var(--not-active-BG)" },
+            svg: { fill: "var(--notActiveBG)" },
           },
           svg: {
             transition: "fill 1000ms ease-out",

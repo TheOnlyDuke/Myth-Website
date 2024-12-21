@@ -13,7 +13,7 @@ const menu = [
 export default function Footer() {
   const footerStyle = {
     width: "100%",
-    backgroundColor: "var(--footer-BG)",
+    backgroundColor: "var(--footerBG)",
     px: {
       xs: "30px",
       lgp: 0,
@@ -50,9 +50,9 @@ export default function Footer() {
         right: "-12.5px",
       },
       ":hover": {
-        color: "var(--active-text)",
+        color: "var(--activeText)",
         "&::before": {
-          backgroundColor: "var(--not-active-BG)",
+          backgroundColor: "var(--notActiveBG)",
         },
       },
     },

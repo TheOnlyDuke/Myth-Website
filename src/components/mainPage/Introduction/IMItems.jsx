@@ -1,3 +1,4 @@
+import { GlobeIconNew } from "@/utils/icons";
 import { Box, Typography } from "@mui/material";
 
 export default function IMItems({ direc, title, desc, picture }) {
@@ -24,7 +25,14 @@ export default function IMItems({ direc, title, desc, picture }) {
           },
         }}
       >
-        <Typography variant="title" sx={{ marginBottom: "30px" }}>
+        <Typography
+          variant="title"
+          sx={{
+            marginBottom: "30px",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
           {title}
         </Typography>
         <Typography variant="normalBodyCap">{desc}</Typography>

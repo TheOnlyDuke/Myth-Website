@@ -6,9 +6,8 @@ const menuDatas = [
   {
     title: (
       <>
-        با بازی{" "}
-        <span style={{ color: "var(--secondary-active-BG)" }}>ریاضی</span> یاد
-        بگیرید
+        با بازی <span style={{ color: "var(--secondaryActiveBG)" }}>ریاضی</span>{" "}
+        یاد بگیرید
       </>
     ),
     desc: "مجموعه فلان با استفاده از جدید‌ترین متد ها مباحث غیر قابل فهم ریاضی را در حین بازی کردن و حل مثال به شما آموزش می‌دهد.",
@@ -17,7 +16,7 @@ const menuDatas = [
   {
     title: (
       <>
-        <span style={{ color: "var(--third-active-BG)" }}>رقابت</span> با بقیه
+        <span style={{ color: "var(--thirdActiveBG)" }}>رقابت</span> با بقیه
         دانشجو ها
       </>
     ),
@@ -27,7 +26,7 @@ const menuDatas = [
   {
     title: (
       <>
-        دریافت <span style={{ color: "var(--active-BG)" }}>امتیاز</span> با حل
+        دریافت <span style={{ color: "var(--activeBG)" }}>امتیاز</span> با حل
         سوالات
       </>
     ),

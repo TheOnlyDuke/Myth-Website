@@ -14,8 +14,7 @@ export default function QuestionBankPreview() {
     >
       <Typography variant="title">
         <span style={{ display: "block" }}>
-          بیش از <span style={{ color: "var(--active-BG)" }}>{number}</span>{" "}
-          سوال
+          بیش از <span style={{ color: "var(--activeBG)" }}>{number}</span> سوال
         </span>
         در بانک سوالات سیگما
       </Typography>

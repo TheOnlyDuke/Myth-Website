@@ -19,7 +19,7 @@ export default function SubjectIntroPictureSide() {
         sx={{
           width: "100%",
           height: "100%",
-          backgroundColor: "var(--active-BG)",
+          backgroundColor: "var(--activeBG)",
           display: {
             xs: "none",
             sm: "block",

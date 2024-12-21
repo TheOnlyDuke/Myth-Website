@@ -11,7 +11,7 @@ export default function SubjectIntroPicture({ src, alt, pos }) {
         borderRight: "2px solid",
         borderBottom: "6px solid",
         borderLeft: "6px solid",
-        borderColor: "var(--black-BG)",
+        borderColor: "var(--blackBG)",
         width: { xs: "100%", sm: "550px" },
         aspectRatio: "550/350",
         top: { sm: pos === 2 ? "125px" : pos === 1 ? 0 : undefined },
