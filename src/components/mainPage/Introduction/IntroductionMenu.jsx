@@ -6,8 +6,8 @@ const menuDatas = [
   {
     title: (
       <>
-        با بازی <span style={{ color: "var(--secondaryActiveBG)" }}>ریاضی</span>{" "}
-        یاد بگیرید
+        با بازی <span style={{ color: "var(--secActiveBG)" }}>ریاضی</span> یاد
+        بگیرید
       </>
     ),
     desc: "مجموعه فلان با استفاده از جدید‌ترین متد ها مباحث غیر قابل فهم ریاضی را در حین بازی کردن و حل مثال به شما آموزش می‌دهد.",
@@ -40,7 +40,7 @@ export default function IntroductionMenu() {
     <Box
       sx={{
         display: "flex",
-        gap: "100px",
+        gap: "50px",
         p: "0 25px",
         width: "100%",
         flexDirection: "column",

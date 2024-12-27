@@ -1,5 +1,7 @@
 "use client";
 import { createContext, useState, useEffect, useContext } from "react";
+import { apiClient } from "@/utils/api";
+import { cookieStorage } from "@/utils/cookies";
 
 const AuthContext = createContext();
 
@@ -7,32 +9,34 @@ export const AuthProvider = ({ children }) => {
   const [USER_INFO, SET_USER_INFO] = useState(null);
   const [ACCESS_TOKEN, SET_ACCESS_TOKEN] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [lastQuestion, setLastQuestion] = useState("");
+
+  const updateAuth = (token, userInfo) => {
+    SET_ACCESS_TOKEN(token);
+    SET_USER_INFO(userInfo);
+    cookieStorage.setToken(token);
+    cookieStorage.setUserInfo(userInfo);
+  };
+
+  const clearAuth = () => {
+    SET_ACCESS_TOKEN(null);
+    SET_USER_INFO(null);
+    cookieStorage.clearAuth();
+  };
 
   useEffect(() => {
-    const token = localStorage.getItem("ACCESS_TOKEN");
-    if (token) {
-      fetch("http://77.237.82.221:8000/accounts/profile/", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((response) => {
-          if (response.status === 401) {
-            throw new Error("Unauthorized");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          SET_USER_INFO(data);
-          SET_ACCESS_TOKEN(token);
-        })
-        .catch((error) => {
-          localStorage.removeItem("ACCESS_TOKEN");
-          SET_ACCESS_TOKEN(null);
-          SET_USER_INFO(null);
+    const token = cookieStorage.getToken();
+    const userInfo = cookieStorage.getUserInfo();
+
+    if (token && userInfo) {
+      // Set initial state from cookies
+      SET_ACCESS_TOKEN(token);
+      SET_USER_INFO(userInfo);
+
+      // Verify token in background
+      apiClient
+        .getProfile(token)
+        .catch(() => {
+          clearAuth();
         })
         .finally(() => {
           setIsLoading(false);
@@ -46,12 +50,22 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         USER_INFO,
-        SET_USER_INFO,
+        SET_USER_INFO: (userInfo) => {
+          SET_USER_INFO(userInfo);
+          if (userInfo) {
+            cookieStorage.setUserInfo(userInfo);
+          }
+        },
         ACCESS_TOKEN,
-        SET_ACCESS_TOKEN,
+        SET_ACCESS_TOKEN: (token) => {
+          SET_ACCESS_TOKEN(token);
+          if (token) {
+            cookieStorage.setToken(token);
+          }
+        },
+        updateAuth,
+        clearAuth,
         isLoading,
-        lastQuestion,
-        setLastQuestion,
       }}
     >
       {children}

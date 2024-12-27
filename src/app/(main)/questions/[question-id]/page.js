@@ -5,6 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import { BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
+import { apiClient } from "@/utils/api";
 
 const simpleArray = [...Array(4)];
 
@@ -22,26 +23,15 @@ export default function EachQuestionPage({ params }) {
   ];
 
   let id = params["question-id"];
-  const BACKEND_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${BACKEND_BASE_URL}/question/${id}/1/`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Requested-With": "XMLHttpRequest",
-          },
-        });
-        if (!response.ok) {
-          throw new Error("Failed to fetch Question Data");
-        }
-        const data = await response.json();
+        const data = await apiClient.getQuestionStage(id, 1);
         setQData(data.stage);
         setStageNumber(data.stage.stage_number);
       } catch (error) {
         setError(error.message);
-        console.error("Error:", error);
       }
     };
 
@@ -52,32 +42,16 @@ export default function EachQuestionPage({ params }) {
     async (option) => {
       setError("");
       try {
-        const response = await fetch(
-          `${BACKEND_BASE_URL}/question/${id}/${stageNumber}/`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "X-Requested-With": "XMLHttpRequest",
-            },
-            body: JSON.stringify({ option: `${option}` }),
-          }
-        );
-        const data = await response.json();
-        if (response.ok) {
-          if (data.message === "Finished all stages of this question.") {
-            setQData("Finished all stages of this question.");
-          } else {
-            setQTitle(qData[`option${option}_title`] || "");
-            setQData(data.stage);
-            setStageNumber(data.stage.stage_number);
-          }
+        const data = await apiClient.submitAnswer(id, stageNumber, option);
+        if (data.message === "Finished all stages of this question.") {
+          setQData("Finished all stages of this question.");
         } else {
-          throw new Error(data.error || "Failed to submit the answer");
+          setQTitle(qData[`option${option}_title`] || "");
+          setQData(data.stage);
+          setStageNumber(data.stage.stage_number);
         }
       } catch (error) {
         setError("مطئنی ؟ یه بار دیگه تلاش کن");
-        console.error("Error:", error);
       }
     },
     [id, stageNumber, qData]
@@ -101,7 +75,7 @@ export default function EachQuestionPage({ params }) {
       {qData === "Finished all stages of this question." ? (
         <Typography
           variant="display"
-          sx={{ display: "flex", justifyContent: "cneter" }}
+          sx={{ display: "flex", justifyContent: "center" }}
         >
           آفرین و درود
         </Typography>

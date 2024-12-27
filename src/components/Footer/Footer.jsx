@@ -1,8 +1,9 @@
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import { Container, Divider } from "@mui/material";
+import { Divider } from "@mui/material";
 import FooterContactMenu from "./FooterContactMenu";
 import FooterSideMenues from "./FooterSideMenues";
 import FooterBottomLine from "./FooterBottomLine";
+import ResponsiveContainer from "../ResponsiveContainer";
 
 const menu = [
   ["وضعیت زیرساخت", `\\`],
@@ -67,7 +68,7 @@ export default function Footer() {
 
   return (
     <Grid container component="footer" sx={footerStyle}>
-      <Container
+      <ResponsiveContainer
         maxWidth="lg"
         disableGutters
         sx={{
@@ -90,7 +91,7 @@ export default function Footer() {
           flexItem
         />
         <FooterBottomLine menu={menu} />
-      </Container>
+      </ResponsiveContainer>
     </Grid>
   );
 }

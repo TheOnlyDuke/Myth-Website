@@ -3,36 +3,29 @@ import QuestionPreview from "@/components/mainPage/QestionsBank/QuestionPreview"
 import { Box, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import Grid from "@mui/material/Unstable_Grid2";
+import { fetchQuestions } from "@/app/api/questions";
 
 export default function QuestionsPage() {
   const [error, setError] = useState("");
   const [qData, setQData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const BACKEND_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
-    const fetchData = async () => {
+    const loadQuestions = async () => {
+      setIsLoading(true);
       try {
-        const response = await fetch(`${BACKEND_BASE_URL}/question/`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Requested-With": "XMLHttpRequest",
-          },
-        });
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data = await response.json();
-        setQData(data);
-      } catch (error) {
-        0;
-        setError(error.message);
-        console.error("Error:", error);
+        await fetchQuestions(setQData, setError);
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    fetchData();
+    loadQuestions();
   }, []);
+
+  if (isLoading) {
+    return <Typography variant="normalBody">Loading questions...</Typography>;
+  }
 
   return (
     <Grid

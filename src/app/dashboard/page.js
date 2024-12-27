@@ -1,57 +1,72 @@
 "use client";
-import { Grid } from "@mui/material";
+import { Grid, Box, CircularProgress, Alert } from "@mui/material";
 import DashSidebar from "@/components/Dashboard/DashSidebar";
 import DashStatsBar from "@/components/Dashboard/DashStatsBar";
 import DashStatsTable from "@/components/Dashboard/DashStatsTable";
-import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import { records } from "@/utils/dummydatas";
 import { useAuth } from "@/contexts/AuthContext";
-import { useEffect } from "react";
+import { apiClient } from "@/utils/api";
+import { cookieStorage } from "@/utils/cookies";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
-  const { USER_INFO, SET_USER_INFO, SET_ACCESS_TOKEN, isLoading } = useAuth();
+  const { USER_INFO, updateAuth, clearAuth, isLoading } = useAuth();
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("ACCESS_TOKEN");
-    if (token && !USER_INFO) {
-      fetch("/api/accounts/profile/", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((response) => {
-          if (response.status === 401) {
-            throw new Error("Unauthorized");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          SET_USER_INFO(data);
-          SET_ACCESS_TOKEN(token);
-        })
-        .catch((error) => {
-          localStorage.removeItem("ACCESS_TOKEN");
-          SET_ACCESS_TOKEN(null);
-          SET_USER_INFO(null);
-        });
+    if (!USER_INFO) {
+      const token = cookieStorage.getToken();
+      const userInfo = cookieStorage.getUserInfo();
+
+      if (token) {
+        apiClient
+          .getProfile(token)
+          .then((data) => {
+            updateAuth(token, data);
+          })
+          .catch((error) => {
+            setError(error.message);
+            clearAuth();
+          });
+      }
     }
-  }, [USER_INFO, SET_USER_INFO, SET_ACCESS_TOKEN]);
+  }, [USER_INFO, updateAuth, clearAuth]);
 
   if (isLoading) {
-    return <p>Loading...</p>; // Show loading indicator while checking auth state
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="100vh"
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box p={3}>
+        <Alert severity="error">{error}</Alert>
+      </Box>
+    );
   }
 
   return (
-    <ProtectedRoute>
-      <Grid container>
-        <DashSidebar />
-        <Grid item xs={12} sm={9} lg={10} p={3}>
-          <DashStatsBar />
-          <DashStatsTable data={records} />
-        </Grid>
-      </Grid>
-    </ProtectedRoute>
+    <Box sx={{ display: "flex", bgcolor: "#f5f5f5", minHeight: "100vh" }}>
+      <DashSidebar />
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          marginRight: "240px",
+        }}
+      >
+        <DashStatsBar />
+        <DashStatsTable data={records} />
+      </Box>
+    </Box>
   );
 }

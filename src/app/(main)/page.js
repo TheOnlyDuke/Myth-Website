@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <Box component="main" sx={mainPageStyles}>
-      <Container
+      <ResponsiveContainer
         disableGutters
         sx={{
           display: "flex",
@@ -49,7 +49,7 @@ export default function Home() {
         <IntroductionMenu />
         <SubjectIntro />
         <QuestionBankPreview />
-      </Container>
+      </ResponsiveContainer>
       <DownloadSection />
     </Box>
   );

@@ -13,6 +13,7 @@ import {
 } from "@/components/auth";
 import { validatePassword } from "@/utils/validations";
 import { universities } from "@/utils/dummydatas";
+import { apiClient } from "@/utils/api";
 
 export default function Page() {
   const router = useRouter();
@@ -49,31 +50,18 @@ export default function Page() {
       }
 
       try {
-        const response = await fetch("/api/accounts/register/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Requested-With": "XMLHttpRequest",
-          },
-          body: JSON.stringify({
-            email: formData.email || null,
-            full_name: formData.username,
-            password: formData.password,
-            phone_number: formData.phoneNumber,
-            // universityId: formData.university ? formData.university.id : null,
-          }),
+        const data = await apiClient.register({
+          email: formData.email || null,
+          full_name: formData.username,
+          password: formData.password,
+          phone_number: formData.phoneNumber,
         });
-        const data = await response.json();
-        if (response.ok) {
-          router.push(
-            `/auth/verify?phone=${encodeURIComponent(formData.phoneNumber)}`
-          );
-        } else {
-          setError(data.error || "ثبت نام موفقیت آمیز نبود");
-        }
+
+        router.push(
+          `/auth/verify?phone=${encodeURIComponent(formData.phoneNumber)}`
+        );
       } catch (error) {
-        setError("مشکل در برقراری ارتباط با سرور");
-        console.error("Error:", error);
+        setError(error.message || "ثبت نام موفقیت آمیز نبود");
       } finally {
         setIsLoading(false);
       }

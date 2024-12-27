@@ -10,10 +10,11 @@ import {
 } from "@/components/auth";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
+import { apiClient } from "@/utils/api";
 
 function LoginPage() {
   const router = useRouter();
-  const { SET_ACCESS_TOKEN, SET_USER_INFO } = useAuth();
+  const { updateAuth } = useAuth();
   const [error, setError] = useState("");
   const [isLoadingLogin, setIsLoadingLogin] = useState(false);
   const [formData, setFormData] = useState({
@@ -33,48 +34,22 @@ function LoginPage() {
       setIsLoadingLogin(true);
 
       try {
-        const response = await fetch(
-          "http://77.237.82.221:8000/accounts/login/",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "X-Requested-With": "XMLHttpRequest",
-            },
-            body: JSON.stringify({
-              phone_number: formData.phoneNumber,
-              password: formData.password,
-            }),
-          }
-        );
-        const data = await response.json();
-        if (response.ok) {
-          localStorage.setItem("ACCESS_TOKEN", data.token);
-          SET_ACCESS_TOKEN(data.token);
-          const userInfoResponse = await fetch(
-            "http://77.237.82.221:8000/accounts/profile/",
-            {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${data.token}`,
-              },
-            }
-          );
-          const userInfoData = await userInfoResponse.json();
-          SET_USER_INFO(userInfoData);
-          router.push(`/dashboard/`);
-        } else {
-          setError(data.error || "ورود موفقیت آمیز نبود");
-        }
+        const data = await apiClient.login({
+          phone_number: formData.phoneNumber,
+          password: formData.password,
+        });
+
+        const userInfo = await apiClient.getProfile(data.token);
+        await updateAuth(data.token, userInfo);
+
+        router.push("/dashboard/");
       } catch (error) {
-        setError("مشکل در برقراری ارتباط با سرور");
-        console.error("Error:", error);
+        setError(error.message || "ورود موفقیت آمیز نبود");
       } finally {
         setIsLoadingLogin(false);
       }
     },
-    [formData, router, SET_ACCESS_TOKEN, SET_USER_INFO]
+    [formData, router, updateAuth]
   );
 
   return (

@@ -1,18 +1,33 @@
-import { SixKPlusSharp } from "@mui/icons-material";
 import { Container } from "@mui/material";
 
-export default function ResponsiveContainer({ children, sx }) {
+export default function ResponsiveContainer({
+  children,
+  sx,
+  maxWidth = "lg",
+  disableGutters = false,
+  ...props
+}) {
   return (
     <Container
-      maxWidth="lg"
-      disableGutters
+      maxWidth={maxWidth}
+      disableGutters={disableGutters}
       sx={{
         px: {
-          sx: "5vw",
-          sm: "10vw",
-          lgp: 0,
+          xs: "32px",
+          sm: "48px",
+          md: "64px",
+          lg: "128px",
+          lgp: "0px",
         },
+        mx: "auto",
+        position: "relative",
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        ...sx,
       }}
+      {...props}
     >
       {children}
     </Container>
