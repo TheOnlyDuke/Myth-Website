@@ -1,5 +1,5 @@
 import { Paper, Typography } from "@mui/material";
-import { BlockMath, InlineMath } from "react-katex";
+import { BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
 
 export default function QuestionOptions({ option, latex, handleSubmit }) {
@@ -42,7 +42,7 @@ export default function QuestionOptions({ option, latex, handleSubmit }) {
       }}
     >
       <Typography variant="normalBodyCap" sx={{ direction: "ltr" }}>
-        <InlineMath math={latex} />
+        <BlockMath math={latex} />
       </Typography>
     </Paper>
   );

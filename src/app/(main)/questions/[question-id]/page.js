@@ -29,6 +29,7 @@ export default function EachQuestionPage({ params }) {
       try {
         const data = await apiClient.getQuestionStage(id, 1);
         setQData(data.stage);
+        setQTitle(data.form.question_latex);
         setStageNumber(data.stage.stage_number);
       } catch (error) {
         setError(error.message);
