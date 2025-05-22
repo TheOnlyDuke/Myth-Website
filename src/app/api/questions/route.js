@@ -7,7 +7,7 @@ export async function GET() {
     }
 
     const response = await fetch(
-      `${process.env.NEXT_PRIVATE_BACKEND_BASE_URL}/question/`,
+      `${process.env.NEXT_PRIVATE_BACKEND_BASE_URL}/question-web/`,
       {
         method: "GET",
         headers: {

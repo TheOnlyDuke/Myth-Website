@@ -7,26 +7,21 @@ export default function FooterSideMenues({ menu }) {
     ourTeam: {
       title: "تیم ما",
       items: [
-        ["درباره ما", "\\"],
-        ["فرصت های شغلی", "\\"],
-        ["اخبار و رویدادها", "\\"],
-        ["تماس با ما", "\\"],
+        ["درباره ما", "\\about"],
+        ["تماس با ما", "\\about"],
       ],
     },
     pops: {
       title: "مباحث پرطرفدار",
       items: [
-        ["جبر و معادلات", "\\"],
-        ["تایع و ساختمان داده", "\\"],
-        ["لگاریتم چندگانه", "\\"],
-        ["حد و پیوستگی", "\\"],
+        ["انتگرال", "\\learning\\انتگرال"],
+        ["مشتق", "\\learning\\مشتق"],
       ],
     },
     products: {
       title: "دیگر محصولات",
       items: [
-        ["آزمونک ریاضی", "\\"],
-        ["تست خودشناسی", "\\"],
+        ["ویدئو های آموزشی", "\\"],
         ["جزوات و جمع بندی", "\\"],
       ],
     },
@@ -45,11 +40,7 @@ export default function FooterSideMenues({ menu }) {
     >
       {Object.keys(MenuesItems).map((key, index) => {
         return (
-          <FooterMenu
-            key={index}
-            index={index}
-            menuData={MenuesItems[key]}
-          />
+          <FooterMenu key={index} index={index} menuData={MenuesItems[key]} />
         );
       })}
     </Grid>

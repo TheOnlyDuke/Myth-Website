@@ -8,23 +8,44 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [USER_INFO, SET_USER_INFO] = useState(null);
   const [ACCESS_TOKEN, SET_ACCESS_TOKEN] = useState(null);
+  const [REFRESH_TOKEN, SET_REFRESH_TOKEN] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const updateAuth = (token, userInfo) => {
+  const updateAuth = (token, refreshToken, userInfo) => {
     SET_ACCESS_TOKEN(token);
+    SET_REFRESH_TOKEN(refreshToken);
     SET_USER_INFO(userInfo);
-    cookieStorage.setToken(token);
-    cookieStorage.setUserInfo(userInfo);
+    if (token) cookieStorage.setAccessToken(token);
+    if (refreshToken) cookieStorage.setRefreshToken(refreshToken);
+    if (userInfo) cookieStorage.setUserInfo(userInfo);
   };
 
   const clearAuth = () => {
     SET_ACCESS_TOKEN(null);
+    SET_REFRESH_TOKEN(null);
     SET_USER_INFO(null);
     cookieStorage.clearAuth();
   };
 
+  const refreshAccessToken = async () => {
+    const refreshToken = cookieStorage.getRefreshToken();
+    if (!refreshToken) return null;
+    try {
+      const data = await apiClient.refreshToken(refreshToken);
+      if (data && data.access) {
+        SET_ACCESS_TOKEN(data.access);
+        cookieStorage.setAccessToken(data.access);
+        if (data.refresh) cookieStorage.setRefreshToken(data.refresh);
+        return data.access;
+      }
+    } catch (error) {
+      clearAuth();
+      return null;
+    }
+  };
+
   useEffect(() => {
-    const token = cookieStorage.getToken();
+    const token = cookieStorage.getAccessToken();
     const userInfo = cookieStorage.getUserInfo();
 
     if (token && userInfo) {
@@ -60,11 +81,12 @@ export const AuthProvider = ({ children }) => {
         SET_ACCESS_TOKEN: (token) => {
           SET_ACCESS_TOKEN(token);
           if (token) {
-            cookieStorage.setToken(token);
+            cookieStorage.setAccessToken(token);
           }
         },
         updateAuth,
         clearAuth,
+        refreshAccessToken,
         isLoading,
       }}
     >

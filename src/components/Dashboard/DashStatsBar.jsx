@@ -9,29 +9,35 @@ export default function DashStatsBar() {
     {
       value: USER_INFO?.score || 0,
       label: "امتیاز خام شما",
-      color: "#6200ea",
     },
     {
       value: USER_INFO?.rank || "N/A",
       label: "رتبه شما",
-      color: "#0091ea",
     },
     {
       value: USER_INFO?.solved_questions || 0,
       label: "سوالات حل شده",
-      color: "#00bfa5",
     },
   ];
 
   return (
-    <Grid container spacing={3}>
+    <Grid
+      container
+      spacing={3}
+      sx={{
+        bgcolor: "primary.main",
+        borderRadius: "var(--border-radius)",
+        justifyContent: "center",
+      }}
+    >
       {stats.map((stat, index) => (
-        <Grid key={index} xs={12} sm={4}>
+        <Grid key={index} xs={12} sm={3}>
           <Card
             elevation={2}
             sx={{
               p: 3,
-              bgcolor: stat.color,
+              bgcolor: "transparent",
+              boxShadow: "none",
               color: "white",
               textAlign: "center",
               transition: "transform 0.2s",
@@ -40,11 +46,14 @@ export default function DashStatsBar() {
               },
             }}
           >
-            <Typography variant="h4" fontWeight="bold">
-              {stat.value}
-            </Typography>
-            <Typography variant="body1" sx={{ mt: 1, opacity: 0.9 }}>
+            <Typography
+              variant="smallTitle"
+              sx={{ color: "var(--activeText)" }}
+            >
               {stat.label}
+            </Typography>
+            <Typography variant="title" sx={{ color: "var(--activeText)" }}>
+              {stat.value}
             </Typography>
           </Card>
         </Grid>

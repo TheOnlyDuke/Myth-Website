@@ -6,9 +6,9 @@ import FooterBottomLine from "./FooterBottomLine";
 import ResponsiveContainer from "../ResponsiveContainer";
 
 const menu = [
-  ["وضعیت زیرساخت", `\\`],
-  ["حریم خصوصی", `\\`],
-  ["قوانین و شرایط", `\\`],
+  ["اموزش نحوه استفاده", `\\howto`],
+  ["حریم خصوصی", `\\privacy&rules\\#privacy`],
+  ["قوانین و شرایط", `\\privacy&rules\\#rules`],
 ];
 
 export default function Footer() {

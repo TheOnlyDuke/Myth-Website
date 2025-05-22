@@ -148,6 +148,22 @@ const muiLinearProgress = {
   },
 };
 
+const muiPaper = {
+  styleOverrides: {
+    root: {
+      boxShadow: "none",
+    },
+  },
+};
+
+const muiCard = {
+  styleOverrides: {
+    root: {
+      boxShadow: "none",
+    },
+  },
+};
+
 const muiCssBaseline = {
   styleOverrides: `
   @font-face {
@@ -160,6 +176,7 @@ const muiCssBaseline = {
 
   * {
     font-family: "IRANYekanX", sans-serif;
+    box-shadow: none !important;
   }
 `,
 };
@@ -183,6 +200,8 @@ const componentsStyles = {
   MuiOutlinedInput: muiOutlinedInput,
   MuiTypography: muiTypography,
   MuiCssBaseline: muiCssBaseline,
+  MuiPaper: muiPaper,
+  MuiCard: muiCard,
 };
 
 const getTypography = (theme) => ({

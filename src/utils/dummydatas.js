@@ -9,30 +9,9 @@ export const universities = [
 
 import mosalasat from "../../public/images/subjects/mosalasat.png";
 import degree2 from "../../public/images/subjects/degree2.png";
-import logarithm from "../../public/images/subjects/logarithm.png";
-import hendese from "../../public/images/subjects/hendese.png";
-import borders from "../../public/images/subjects/borders.png";
-import theory from "../../public/images/subjects/theory.png";
-import limit from "../../public/images/subjects/limit.png";
-import posiblities from "../../public/images/subjects/posiblities.png";
-import functions from "../../public/images/subjects/functions.png";
-
 export const subjects = [
-  { id: 1, name: "مثلثات", numOfEp: 15, difficulty: 2, icon: mosalasat },
-  { id: 2, name: "معدلات درجه دو", numOfEp: 16, difficulty: 2, icon: degree2 },
-  { id: 3, name: "لگاریتم", numOfEp: 21, difficulty: 3, icon: logarithm },
-  { id: 4, name: "هندسه", numOfEp: 10, difficulty: 2, icon: hendese },
-  { id: 5, name: "بردارها", numOfEp: 8, difficulty: 1, icon: borders },
-  { id: 6, name: "تئوری اعداد", numOfEp: 17, difficulty: 3, icon: theory },
-  { id: 7, name: "حد و پیوستگی", numOfEp: 8, difficulty: 1, icon: limit },
-  {
-    id: 8,
-    name: "آمار و احتمال",
-    numOfEp: 12,
-    difficulty: 2,
-    icon: posiblities,
-  },
-  { id: 9, name: "تابع ها", numOfEp: 10, difficulty: 1, icon: functions },
+  { id: 1, name: "انتگرال", numOfEp: 15, difficulty: 3, icon: mosalasat },
+  { id: 2, name: "مشتق", numOfEp: 16, difficulty: 2, icon: degree2 },
 ];
 
 import { OpenBook, Pencil, RescueTube } from "./icons";
@@ -67,11 +46,8 @@ export const SubjectIntroPics = [
 ];
 
 export const TopSubjects = [
-  { id: 1, name: "مثلثات", icon: mosalasat },
-  { id: 2, name: "معدلات درجه دو", icon: degree2 },
-  { id: 3, name: "لگاریتم", icon: logarithm },
-  { id: 4, name: "هندسه", icon: hendese },
-  { id: 5, name: "بردارها", icon: borders },
+  { id: 1, name: "مشتق", icon: mosalasat },
+  { id: 2, name: "انتگرال", icon: degree2 },
 ];
 
 import { Layers } from "./icons";
@@ -205,3 +181,169 @@ export const records = [
     time: "21:23",
   },
 ];
+
+import { HeroCompetition, HeroManWithCalc, HeroScore } from "@/utils/icons";
+
+export const IntroMenuDatas = [
+  {
+    title: (
+      <>
+        با بازی <span style={{ color: "var(--secActiveBG)" }}>ریاضی</span> یاد
+        بگیرید
+      </>
+    ),
+    desc: "با سیگما ریاضی رو بصورت چالش وار و الگوریتمی وار یاد بگیر و اموزش ببین در هر زمانی و در هرکجایی که هستی",
+    picture: <HeroManWithCalc />,
+  },
+  {
+    title: (
+      <>
+        <span style={{ color: "var(--thirdActiveBG)" }}>رقابت</span> با بقیه
+        دانشجو ها
+      </>
+    ),
+    desc: "با حل سوالات بیشتر با دیگر دانشجو ها در دانشگاه و کل کشور رقابت کن، تو در چه سطحی قرار میگیری؟؟.",
+    picture: <HeroCompetition />,
+  },
+  {
+    title: (
+      <>
+        دریافت <span style={{ color: "var(--activeBG)" }}>امتیاز</span> با حل
+        سوالات
+      </>
+    ),
+    desc: "با حل کردن هر سوال امتیاز خود را افزایش بده و تحلیل کن کجا امتیاز کمتری داری کجا نقطه ضعفته ؟",
+    picture: <HeroScore />,
+  },
+];
+
+import step1 from "../../public/images/temp/Rectangle 26.png";
+import step2 from "../../public/images/temp/Rectangle 27.png";
+import step3 from "../../public/images/temp/Rectangle 28.png";
+import step4 from "../../public/images/temp/Rectangle 32.png";
+import step5 from "../../public/images/temp/Rectangle 34.png";
+import step6 from "../../public/images/temp/Rectangle 33.png";
+
+export const howToSteps = [
+  {
+    title: <>ورود به سامانه:</>,
+    desc: "ابتدا وارد سامانه شوید و با انتخاب بخش مربوط به مبحث مورد نظر (مثلاً مشتق)، وارد فضای آموزشی شوید.",
+    picture: step1,
+  },
+  {
+    title: <>شروع چالش:</>,
+    desc: "در هر چالش، یک صورت‌مسئله نمایش داده می‌شود. این صورت‌مسئله به‌گونه‌ای طراحی شده که کاربر را وارد یک زنجیره استدلالی کند.",
+    picture: step2,
+  },
+  {
+    title: <>انتخاب گزینه:</>,
+    desc: "برای هر مرحله، چهار گزینه نمایش داده می‌شود. شما باید با توجه به درک خود از مسئله، گزینه‌ای را که منجر به ادامه مسیر صحیح است، انتخاب کنید.",
+    picture: step3,
+  },
+  {
+    title: <>پیشروی مرحله‌ای: </>,
+    desc: "با انتخاب گزینه درست، وارد گام بعدی می‌شوید. اگر گزینه اشتباه را انتخاب کنید، توضیحاتی جهت راهنمایی و اصلاح درک ارائه می‌شود تا کاربر بتواند با مرور مجدد، مسیر درست را پیدا کند.",
+    picture: step4,
+  },
+  {
+    title: <>پایان چالش:</>,
+    desc: "پس از طی چندین مرحله و انتخاب‌های صحیح، به پایان چالش خواهید رسید. در انتها، یک جمع‌بندی از مفاهیم آموزش‌داده‌شده نمایش داده می‌شود.",
+    picture: step5,
+  },
+  {
+    title: <>دسترسی به منابع:</>,
+    desc: "در صورت نیاز به توضیح بیشتر یا مرور مفاهیم، می‌توانید از قسمت ویدئوهای آموزشی و جزوات استفاده کنید (در حال تکمیل و به‌روزرسانی).",
+    picture: step6,
+  },
+];
+
+import privacy1 from "../../public/images/temp/Rectangle 15.png";
+import privacy2 from "../../public/images/temp/Rectangle 16.png";
+
+export const privacy = [
+  {
+    title: <>قوانین و مقررات عمومی </>,
+    desc: `کلیه فعالیت‌های برای سایت سیگما میباشد و بر اساس قوانین و مقررات و نظامات جمهوری اسلامی ایران (قانون تجارت الکترونیک و قانون حمایت از حقوق مصرف کننده) و منطبق بر موازین شرعی است. ورود شما به وب‌سایت www.sigma.ir با حساب کاربری شخصی و ثبت نام، به منزله آگاهی از قوانین و مقررات و پذیرفتن کامل آن میباشد و جهل به آن غیر مسموع است.
+هرکاربر متعهد میگردد اطلاعاتی را که برای تکمیل کردن فرآیند ثبت نام در سایت سیگما  انجام می‌دهد، دقیق و صحیح و متعلق به شخص باشد و مسئولیت ثبت اطلاعات غیر واقعی و جعلی ، عواقب آن به عهده کاربر خواهد بود.
+هویت شخصی کاربران  محرمانه بوده و اطلاعات شخصی کاربران به هیچ شخص یا سازمان دیگری منتقل نمیگردد و کلیه اطلاعات خریداران در این سایت و اطلاعات خرید آنان محفوظ خواهد ماند  مگر با حکم مقام محترم قضایی یا اداری صالح بر طبق قوانین و مقررات در اختیار مراجع ذی‌صلاح قرار دهد. و همچنین قابلیت فروش یا ارائه به شخص ثالث مگر با حکم قضایی نخواهد داشت.
+ ساعت پاسخگویی 11 تا 21 میباشد.
+محصولات و خدمات ارائه شده در وب سایت سیگما  جهت  یادگیری بهتر ریاضی شما میباشد. خرید دوره ها از این وبسایت به همانند  تدریس خصوصی حضوری در خانه میباشد از  مطابق تمامی قوانین و محدودیت های    است.`,
+    picture: privacy1,
+  },
+  {
+    title: <>حریم خصوصی</>,
+    desc: `کلیه فعالیت‌های برای سایت سیگما میباشد و بر اساس قوانین و مقررات و نظامات جمهوری اسلامی ایران (قانون تجارت الکترونیک و قانون حمایت از حقوق مصرف کننده) و منطبق بر موازین شرعی است. ورود شما به وب‌سایت www.sigma.ir با حساب کاربری شخصی و ثبت نام، به منزله آگاهی از قوانین و مقررات و پذیرفتن کامل آن میباشد و جهل به آن غیر مسموع است.
+هرکاربر متعهد میگردد اطلاعاتی را که برای تکمیل کردن فرآیند ثبت نام در سایت سیگما  انجام می‌دهد، دقیق و صحیح و متعلق به شخص باشد و مسئولیت ثبت اطلاعات غیر واقعی و جعلی ، عواقب آن به عهده کاربر خواهد بود.
+هویت شخصی کاربران  محرمانه بوده و اطلاعات شخصی کاربران به هیچ شخص یا سازمان دیگری منتقل نمیگردد و کلیه اطلاعات خریداران در این سایت و اطلاعات خرید آنان محفوظ خواهد ماند  مگر با حکم مقام محترم قضایی یا اداری صالح بر طبق قوانین و مقررات در اختیار مراجع ذی‌صلاح قرار دهد. و همچنین قابلیت فروش یا ارائه به شخص ثالث مگر با حکم قضایی نخواهد داشت. 
+محصولات و خدمات ارائه شده در وب سایت سیگما  جهت  یادگیری بهتر ریاضی شما میباشد. خرید دوره ها از این وبسایت به همانند  تدریس خصوصی حضوری در خانه میباشد از  مطابق تمامی قوانین و محدودیت های    است.`,
+    picture: privacy2,
+  },
+];
+
+export const staffData = {
+  devs: {
+    front: {
+      name: "مهدی عباسی",
+      avatar: "./images/staff/front.jpg",
+      role: "‌فرانت‌اند",
+      education: "کارشناسی علوم کامپیوتر",
+      framework: "Next.js",
+      github: "https://github.com/TheOnlyDuke",
+      email: "DukeMahdinal@gmail.com",
+    },
+    back: {
+      name: "محمد مهدی جهانتیغی",
+      avatar: "./images/staff/back.jpg",
+      role: "بک‌اند",
+      education: "کارشناسی علوم کامپیوتر",
+      framework: "Django",
+      github: "https://github.com/mohammad2831",
+      email: "mhmd.2831.mahdi@gmail.com",
+    },
+    android: {
+      name: "یاسین قابوسی",
+      avatar: "./images/staff/android.jpg",
+      role: "اپلیکشن اندروید",
+      education: "کارشناسی علوم کامپیوتر",
+      framework: "Flutter",
+      github: "",
+      email: "",
+    },
+    // design: {
+    //   name: "ایلیا بازیار ",
+    //   avatar: "./images/staff/design.jpg",
+    //   role: " ui و ux",
+    //   education: "کارشناسی علوم کامپیوتر",
+    //   framework: "Figma Designer",
+    //   github: "https://github.com/iliaprm",
+    //   telegram: "@Iliya_prm",
+    //   email: "iliabaziyar006@gmail.com",
+    // },
+  },
+  question: [
+    {
+      name: "حسن ذکرآبادی",
+      avatar: "./images/staff/q1.jpg",
+      role: "‌تمامی بخش ها",
+      education: "کارشناسی ریاضیات و کاربردها",
+      framework: "120 سوال",
+      email: "hassan.zekrabad@gmail.com",
+    },
+    {
+      name: "صادق ملایجردی",
+      avatar: "./images/staff/q2.jpg",
+      role: "‌مشتق مراتب بالاتر و انتگرال های مثلثاتی",
+      education: "کارشناسی ریاضیات و کاربردها",
+      framework: "50 سوال",
+      email: "ss.malaijerdy@gmail.com",
+    },
+    {
+      name: "بهاره محمدیان",
+      avatar: "./images/staff/q3.jpg",
+      role: "مشتق زنجیره‌ای و انتگرال تغییر مثلثاتی",
+      education: "کارشناسی علوم کامپیوتر",
+      framework: "50 سوال",
+      email: "bahare.mooh@gmail.com",
+    },
+  ],
+};

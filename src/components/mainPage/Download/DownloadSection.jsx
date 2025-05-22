@@ -39,7 +39,12 @@ export default function DownloadSection({}) {
           display: { xs: "none", sm: "block" },
         }}
       >
-        <Image src={DownloadSectionImage} width={800} height={1080} />
+        <Image
+          src={DownloadSectionImage}
+          alt="َAndroid sample picture"
+          width={800}
+          height={1080}
+        />
       </Box>
     </Box>
   );

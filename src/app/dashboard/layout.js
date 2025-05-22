@@ -1,17 +1,14 @@
-import { Box } from "@mui/material";
-
-export default function DashBoardLayout({children}) {
+import ResponsiveContainer from "@/components/ResponsiveContainer";
+export default function DashBoardLayout({ children }) {
   return (
-    <Box
+    <ResponsiveContainer
       component="main"
       sx={{
-        width: "100%",
-        p: "0",
-        m: "0",
-        height: "100%",
+        py: "100px",
+        minHeight: "100dvh",
       }}
     >
       {children}
-    </Box>
+    </ResponsiveContainer>
   );
 }

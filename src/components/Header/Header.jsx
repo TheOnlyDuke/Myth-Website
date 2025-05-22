@@ -91,7 +91,7 @@ function Header() {
               <Typography sx={HEADER_STYLES.signUpButton}>
                 <Link href={USER_INFO ? "/dashboard" : "/auth"}>
                   {USER_INFO
-                    ? `داشبورد - ${USER_INFO.full_name}`
+                    ? `داشبورد - ${USER_INFO.user.full_name}`
                     : "ورود یا ثبت نام"}
                 </Link>
               </Typography>

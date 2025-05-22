@@ -2,7 +2,7 @@ import Link from "next/link";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { Typography } from "@mui/material";
 
-export default function FooterBottomLine({menu}) {
+export default function FooterBottomLine({ menu }) {
   return (
     <Grid
       xs={12}
@@ -14,14 +14,15 @@ export default function FooterBottomLine({menu}) {
         alignItems: "center",
       }}
     >
-      <Grid xs={12} sm={6} id="footerLisence">
+      <Grid xs={12} sm={7} id="footerLisence">
         <Typography variant="smallBody">
-          ©️ 1401 - تمامی حقوق این وبسایت متعلق به گروه فلان می‌باشد.
+          ©️ 1404 - تمامی حقوق این وبسایت متعلق به انجمن علمی علوم کامیپوتر و
+          هوش مصنوعی دانشگاه حکیم سبزواری می‌باشد.
         </Typography>
       </Grid>
       <Grid
         id="footerRules&Etc"
-        xs={6}
+        xs={5}
         container
         sx={{
           justifyContent: "space-evenly",

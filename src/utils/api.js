@@ -54,12 +54,22 @@ export const apiClient = {
 
   getQuestions: () => makeRequest("/api/questions"),
 
-  getQuestionStage: (questionId, stage) =>
-    makeRequest(`/api/questions/${questionId}/${stage}`),
+  getQuestionStage: (questionId) => makeRequest(`/api/questions/${questionId}`),
 
   submitAnswer: (questionId, stage, option) =>
     makeRequest(`/api/questions/${questionId}/${stage}`, {
       method: "POST",
-      body: JSON.stringify({ option: String(option) }),
+      body: JSON.stringify({ answer: String(option) }),
+    }),
+
+  /**
+   * Use a refresh token to obtain a new access token.
+   * @param {string} refreshToken - The refresh token string
+   * @returns {Promise<Object>} - { access: string, refresh?: string }
+   */
+  refreshToken: (refreshToken) =>
+    makeRequest("/api/accounts/refresh", {
+      method: "POST",
+      body: JSON.stringify({ refresh: refreshToken }),
     }),
 };

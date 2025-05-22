@@ -56,7 +56,7 @@ export default function Page() {
           password: formData.password,
           phone_number: formData.phoneNumber,
         });
-
+        alert(data);
         router.push(
           `/auth/verify?phone=${encodeURIComponent(formData.phoneNumber)}`
         );

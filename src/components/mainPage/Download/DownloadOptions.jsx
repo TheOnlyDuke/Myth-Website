@@ -17,33 +17,33 @@ export default function DownloadOptions() {
         },
       }}
     >
-      <Grid item xs={6}>
+      <Grid xs={6}>
         <a href="https://google.com" target="_blank" rel="noopener noreferrer">
           <Image
             src={GooglePLay}
             width={150}
             height={50}
-            alt="Google PLay Download Link"
+            alt="Direct android download link"
           />
         </a>
       </Grid>
-      <Grid item xs={6}>
+      <Grid xs={6}>
         <a href="https://google.com" target="_blank" rel="noopener noreferrer">
           <Image
             src={AppStore}
             width={150}
             height={50}
-            alt="App Store Download Link"
+            alt="IOS PWA Download Link"
           />
         </a>
       </Grid>
-      <Grid item xs={6}>
+      <Grid xs={6}>
         <a href="https://google.com" target="_blank" rel="noopener noreferrer">
           <Image
             src={DirectDownload}
             width={150}
             height={50}
-            alt="Direct Download Link"
+            alt="Windows direct download link"
           />
         </a>
       </Grid>

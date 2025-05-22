@@ -39,8 +39,8 @@ function LoginPage() {
           password: formData.password,
         });
 
-        const userInfo = await apiClient.getProfile(data.token);
-        await updateAuth(data.token, userInfo);
+        const userInfo = await apiClient.getProfile(data.access_token);
+        await updateAuth(data.access_token, data.refresh_token, userInfo);
 
         router.push("/dashboard/");
       } catch (error) {

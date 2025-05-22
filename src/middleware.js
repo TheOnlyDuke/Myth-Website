@@ -6,9 +6,12 @@ export const config = {
 };
 
 export function middleware(request) {
-  const authToken = request.cookies.get("auth_token");
+  const accessToken = request.cookies.get("access_token");
 
-  if (!authToken?.value && request.nextUrl.pathname.startsWith("/dashboard")) {
+  if (
+    !accessToken?.value &&
+    request.nextUrl.pathname.startsWith("/dashboard")
+  ) {
     return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 

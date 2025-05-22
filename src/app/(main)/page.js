@@ -7,6 +7,7 @@ import {
   HeroSection,
 } from "@/components/mainPage";
 import ResponsiveContainer from "@/components/ResponsiveContainer";
+import { IntroMenuDatas } from "@/utils/dummydatas";
 
 export default function Home() {
   const mainPageStyles = {
@@ -46,7 +47,7 @@ export default function Home() {
         }}
       >
         <HeroSection />
-        <IntroductionMenu />
+        <IntroductionMenu data={IntroMenuDatas} />
         <SubjectIntro />
         <QuestionBankPreview />
       </ResponsiveContainer>

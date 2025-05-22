@@ -2,6 +2,7 @@ import { Box, Typography, Button } from "@mui/material";
 import { heroStyles } from "./styles";
 import HeroImage from "./HeroImage";
 import ResponsiveContainer from "@/components/ResponsiveContainer";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -18,10 +19,11 @@ export default function HeroSection() {
             مجموعه سیگما با استفاده از جدید‌ترین متد ها مباحث غیر قابل فهم ریاضی
             را در حین بازی کردن و حل مثال به شما آموزش می‌دهد.
           </Typography>
-
-          <Button variant="contained" sx={heroStyles.button}>
-            آموزش رو شروع كنيد
-          </Button>
+          <Link href="/questions">
+            <Button variant="contained" sx={heroStyles.button}>
+              آموزش رو شروع كنيد
+            </Button>
+          </Link>
         </Box>
       </Box>
     </ResponsiveContainer>

@@ -3,6 +3,7 @@ export const heroStyles = {
     height: "fit-content",
     display: "flex",
     alignItems: "center",
+    marginTop: "100px",
   },
   wrapper: {
     display: "flex",

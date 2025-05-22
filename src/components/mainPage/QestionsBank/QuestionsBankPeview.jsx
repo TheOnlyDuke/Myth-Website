@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import QuestionsGridPreview from "./QuestionsGridPreview";
 
-const number = 1400;
+const number = 250;
 
 export default function QuestionBankPreview() {
   return (

@@ -1,5 +1,4 @@
 import Stars from "../../../../public/images/Download/Stars.png";
-
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 
@@ -7,9 +6,9 @@ import Image from "next/image";
 export default function DownloadAppsRatings() {
   return (
     <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
-      <Image src={Stars} width={70} height={15} alt="Stars" />
+      <Image src={Stars} width={24} height={24} alt="Stars" />
       <Typography variant="smallBody" sx={{ color: "var(--activeText)" }}>
-        از 20348 دانلود
+        دانلود مستقیم برای :
       </Typography>
     </Box>
   );

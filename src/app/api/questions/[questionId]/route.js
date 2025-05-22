@@ -5,7 +5,7 @@ export async function GET(request, { params }) {
     const { questionId } = params;
 
     const response = await fetch(
-      `${process.env.NEXT_PRIVATE_BACKEND_BASE_URL}/question/${questionId}/`,
+      `${process.env.NEXT_PRIVATE_BACKEND_BASE_URL}/question-web/${questionId}/`,
       {
         method: "GET",
         headers: {

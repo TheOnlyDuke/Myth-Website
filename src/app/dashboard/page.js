@@ -15,14 +15,15 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (!USER_INFO) {
-      const token = cookieStorage.getToken();
+      const accessToken = cookieStorage.getAccessToken();
+      const refreshToken = cookieStorage.getRefreshToken();
       const userInfo = cookieStorage.getUserInfo();
 
-      if (token) {
+      if (accessToken) {
         apiClient
-          .getProfile(token)
+          .getProfile(accessToken)
           .then((data) => {
-            updateAuth(token, data);
+            updateAuth(accessToken, data);
           })
           .catch((error) => {
             setError(error.message);
@@ -54,19 +55,19 @@ export default function Dashboard() {
   }
 
   return (
-    <Box sx={{ display: "flex", bgcolor: "#f5f5f5", minHeight: "100vh" }}>
-      <DashSidebar />
+    <Box
+      sx={{ display: "flex", width: "100%", minHeight: "calc(100dvh - 200px)" }}
+    >
       <Box
-        component="main"
         sx={{
           flexGrow: 1,
           p: 3,
-          marginRight: "240px",
         }}
       >
         <DashStatsBar />
         <DashStatsTable data={records} />
       </Box>
+      <DashSidebar />
     </Box>
   );
 }

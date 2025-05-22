@@ -6,35 +6,62 @@ import {
   TableRow,
   TableBody,
   TableCell,
-  Paper
+  Paper,
+  Typography,
 } from "@mui/material";
 
-export default function DashStatsTable({data}) {
+export default function DashStatsTable({ data }) {
   return (
     <Box mt={4}>
-      <TableContainer component={Paper}>
-        <Table>
+      <TableContainer
+        component={Paper}
+        sx={{ direction: "rtl", boxShadow: 0, bgcolor: "transparent" }}
+      >
+        <Table sx={{ border: 0 }}>
           <TableHead>
-            <TableRow>
-              <TableCell>تاریخچه حل سوالات</TableCell>
-              <TableCell align="right">زمان و تاریخ</TableCell>
-              <TableCell align="right">امتیاز دریافتی</TableCell>
-              <TableCell align="right">تعداد درست و نادرست</TableCell>
-              <TableCell align="right">دسترسی‌ها</TableCell>
+            <TableRow sx={{ border: 0 }}>
+              <TableCell align="right" sx={{ border: 0 }}>
+                <Typography variant="normalBody">تاریخچه حل سوالات</Typography>
+              </TableCell>
+              <TableCell align="right" sx={{ border: 0 }}>
+                <Typography variant="normalBody">زمان و تاریخ</Typography>
+              </TableCell>
+              <TableCell align="right" sx={{ border: 0 }}>
+                <Typography variant="normalBody">امتیاز دریافتی</Typography>
+              </TableCell>
+              <TableCell align="right" sx={{ border: 0 }}>
+                <Typography variant="normalBody">
+                  تعداد درست و نادرست
+                </Typography>
+              </TableCell>
+              <TableCell align="right" sx={{ border: 0 }}>
+                <Typography variant="normalBody">دسترسی‌ها</Typography>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.map((row, index) => (
-              <TableRow key={index}>
-                <TableCell>{row.subject}</TableCell>
-                <TableCell align="right">
-                  {row.date} - {row.time}
+              <TableRow key={index} sx={{ border: 0 }}>
+                <TableCell align="right" sx={{ border: 0 }}>
+                  <Typography variant="smallBodyCap">{row.subject}</Typography>
                 </TableCell>
-                <TableCell align="right">{row.score}</TableCell>
-                <TableCell align="right">
-                  {row.correct} درست و {row.incorrect} نادرست
+                <TableCell align="right" sx={{ border: 0 }}>
+                  <Typography variant="smallBodyCap">
+                    {row.date} - {row.time}
+                  </Typography>
                 </TableCell>
-                <TableCell align="right">👁️</TableCell>
+                <TableCell align="right" sx={{ border: 0 }}>
+                  <Typography variant="smallBodyCap">{row.score}</Typography>
+                </TableCell>
+                <TableCell align="right" sx={{ border: 0 }}>
+                  <Typography variant="smallBodyCap">
+                    {row.correct} درست و {row.incorrect} نادرست
+                  </Typography>
+                </TableCell>
+                <TableCell align="right" sx={{ border: 0 }}>
+                  <Typography variant="smallBodyCap"></Typography>
+                  👁️
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
