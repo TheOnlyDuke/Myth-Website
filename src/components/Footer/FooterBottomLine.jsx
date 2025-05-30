@@ -16,8 +16,7 @@ export default function FooterBottomLine({ menu }) {
     >
       <Grid xs={12} sm={7} id="footerLisence">
         <Typography variant="smallBody">
-          ©️ 1404 - تمامی حقوق این وبسایت متعلق به انجمن علمی علوم کامیپوتر و
-          هوش مصنوعی دانشگاه حکیم سبزواری می‌باشد.
+          ©️ 1404 - تمامی حقوق این وبسایت متعلق به تیم سیگما می‌باشد.
         </Typography>
       </Grid>
       <Grid

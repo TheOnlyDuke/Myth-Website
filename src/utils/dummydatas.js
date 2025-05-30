@@ -309,16 +309,16 @@ export const staffData = {
       github: "",
       email: "",
     },
-    // design: {
-    //   name: "ایلیا بازیار ",
-    //   avatar: "./images/staff/design.jpg",
-    //   role: " ui و ux",
-    //   education: "کارشناسی علوم کامپیوتر",
-    //   framework: "Figma Designer",
-    //   github: "https://github.com/iliaprm",
-    //   telegram: "@Iliya_prm",
-    //   email: "iliabaziyar006@gmail.com",
-    // },
+    design: {
+      name: "ایلیا بازیار ",
+      avatar: "./images/staff/design.jpg",
+      role: " ui و ux",
+      education: "کارشناسی علوم کامپیوتر",
+      framework: "Figma Designer",
+      github: "https://github.com/iliaprm",
+      telegram: "@Iliya_prm",
+      email: "iliabaziyar006@gmail.com",
+    },
   },
   question: [
     {
@@ -326,7 +326,6 @@ export const staffData = {
       avatar: "./images/staff/q1.jpg",
       role: "‌تمامی بخش ها",
       education: "کارشناسی ریاضیات و کاربردها",
-      framework: "120 سوال",
       email: "hassan.zekrabad@gmail.com",
     },
     {
@@ -334,7 +333,6 @@ export const staffData = {
       avatar: "./images/staff/q2.jpg",
       role: "‌مشتق مراتب بالاتر و انتگرال های مثلثاتی",
       education: "کارشناسی ریاضیات و کاربردها",
-      framework: "50 سوال",
       email: "ss.malaijerdy@gmail.com",
     },
     {
@@ -342,7 +340,6 @@ export const staffData = {
       avatar: "./images/staff/q3.jpg",
       role: "مشتق زنجیره‌ای و انتگرال تغییر مثلثاتی",
       education: "کارشناسی علوم کامپیوتر",
-      framework: "50 سوال",
       email: "bahare.mooh@gmail.com",
     },
   ],
